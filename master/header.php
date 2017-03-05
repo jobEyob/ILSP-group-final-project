@@ -48,8 +48,8 @@ $title = "ILSP-final project";
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
                             <li><a href="/ILSP-group-final-project/pages/request_for_reg.php"><span class="glyphicon glyphicon-registration-mark"></span> Registration</a></li>
-                            <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                        </ul>
+                            <li><a data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                        </ul> 
                     </div>
                 </div>
                 
