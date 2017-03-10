@@ -9,11 +9,14 @@ $title = "ILSP-final project";
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="/ILSP-group-final-project/lib/css/bootstrap.min.css">
         <link rel="stylesheet" href="/ILSP-group-final-project/lib/css/bootstrap-theme.min.css">
-
+        <link rel="stylesheet" href="/ILPS-group-final-project/lib/css/font-awesome.min.css" > 
+        <link rel="stylesheet" href="/ILPS-group-final-project/lib/css/font-awesome.css" > 
         <link rel="stylesheet" href="/ILSP-group-final-project/css/custom-css.css">
+        <link rel="stylesheet" href="/ILSP-group-final-project/css/slider.css">
         <script src="/ILSP-group-final-project/lib/js/jquery.min.js"></script>
         <script src="/ILSP-group-final-project/lib/js/bootstrap.min.js"></script>
         <script src="/ILSP-group-final-project/js/custom-js.js"></script>
+         <script src="/ILSP-group-final-project/js/slider.js"></script>
     </head>
     <!--head section end her --->
     <body id="myPage">
