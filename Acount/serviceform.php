@@ -230,33 +230,36 @@
 
         
       <link rel="stylesheet" href="/ILSP-group-final-project/lib/css/jquery-ui.css">
-      
-      <script src="/ILSP-group-final-project/lib/js/jquery-ui.js"></script>
-                
-                
-      <div class="form-group">
-          <label class="col-md-4 control-label">Service time</label>  
-          <div class="col-md-2 inputGroupContainer">
-              
-
-              <input id="service_time" placeholder="hour in day" class="form-control" type="number" max="24" min="1" value="" >
-          </div> 
-  
-          <div class="col-md-2 inputGroupContainer">
-              
-
-              <input id="service_time" placeholder="day in wick" class="form-control" type="number" max="7" min="1" value="" >
-                 
-                  
-          </div>
-      </div>
+      <link rel="stylesheet" href="/ILSP-group-final-project/lib/css/jquery-ui-timepicker-addon.css">
+       <script src="/ILSP-group-final-project/lib/js/jquery-ui.js"></script>
+       <script src="/ILSP-group-final-project/lib/js/jquery-ui-timepicker-addon.js"> </script>   
+       
+           
+               
+             
+       
+       <div class="form-group">
+                    <label class="col-md-4 control-label">Service time</label>  
+                    <div class="col-md-2 inputGroupContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+                            <input id="service_t" name="open_time" placeholder="hour in day" class="form-control" type="text">
+                        </div>
+                    </div>
+                   <div class="col-md-2 inputGroupContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                            <input id="service_d" name="open_time" placeholder="day in week" class="form-control" type="number" max="7" min="1" value="" >
+                        </div>
+                    </div>
+                </div>
               
                     
       <div class="form-group">
                     <label class="col-md-4 control-label">open time</label>  
                     <div class="col-md-4 inputGroupContainer">
                         <div class="input-group">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
                             <input id="o_time" name="open_time" placeholder="open time" class="form-control" type="text">
                         </div>
                     </div>
@@ -266,7 +269,7 @@
                     <label class="col-md-4 control-label">close time</label>  
                     <div class="col-md-4 inputGroupContainer">
                         <div class="input-group">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
                             <input id="c_time"name="close_time" placeholder="close time" class="form-control" type="text">
                         </div>
                     </div>
@@ -328,12 +331,23 @@
 
         
          <script>
-$(function() {
- $( "#o_time" ).datepicker({ 
-     
-              timeFormat: "hh:mm tt"
-         });
+             
+ $('#service_t').timepicker({
+	hourMin: 1,
+	hourMax: 24           
+    });
+    
+ $('#o_time').timepicker({
+	hourGrid: 4,
+	minuteGrid: 10,
+	timeFormat: 'hh:mm tt'
 });
+$('#c_time').timepicker({
+	hourGrid: 4,
+	minuteGrid: 10,
+	timeFormat: 'hh:mm tt'
+});
+
                   </script>
         
         

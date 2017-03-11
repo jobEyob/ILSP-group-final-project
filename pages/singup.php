@@ -32,7 +32,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/ILSP-group-final-project/master/header.php
                         <label class="control-label col-sm-3" for="pwd">Password:</label>
                         <div class="col-sm-6" inputGroupContainer>
                             <div class="input-group">
-                             <span class="input-group-addon"><i class="glyphicon glyphicon glyphicon-eye-open"></i></span>   
+                             <span class="input-group-addon"><i class="glyphicon glyphicon glyphicon-lock"></i></span>   
                             <input type="password" class="form-control" id="pwd" placeholder="Enter password">
                          
                             </div>
@@ -43,7 +43,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/ILSP-group-final-project/master/header.php
                         <label class="control-label col-sm-3" for="cpwd">confirm Password:</label>
                         <div class="col-sm-6" inputGroupContainer >
                             <div class="input-group">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon glyphicon-eye-open"></i></span>     
+                            <span class="input-group-addon"><i class="glyphicon glyphicon glyphicon-lock"></i></span>     
                             <input type="password" class="form-control" id="cpwd" placeholder="Enter password again">
                         </div> <div class="col-sm-3"> </div>
                         </div>
@@ -51,7 +51,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/ILSP-group-final-project/master/header.php
 
                     <div class="form-group">
                         <div class="col-sm-offset-3 col-sm-9">
-                            <button type="submit" class="btn btn-default">Submit</button>
+                            <button type="submit" class="btn btn-default">Sing in</button>
                         </div>
                     </div>
                 </form>
