@@ -17,6 +17,7 @@ $title = "ILSP-final project";
         <script src="/ILSP-group-final-project/lib/js/bootstrap.min.js"></script>
         <script src="/ILSP-group-final-project/js/custom-js.js"></script>
          <script src="/ILSP-group-final-project/js/slider.js"></script>
+         
     </head>
     <!--head section end her --->
     <body id="myPage">

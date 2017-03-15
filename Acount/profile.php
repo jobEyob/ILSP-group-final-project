@@ -91,7 +91,14 @@ include $_SERVER['DOCUMENT_ROOT'] . '/ILSP-group-final-project/master/header.php
             <input class="btn btn-default" value="Cancel" type="reset">
           </div>
         </div>
+          
       </form>
-    </div>
+  
   </div>
+</div>
+  
+  
+  
+  
+  
 </div>
