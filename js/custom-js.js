@@ -31,7 +31,12 @@ $(document).ready(function(){
   
   
   // this for category navegation with close option
-  function ilps_open_nav(x) {
+    
+  
+  
+
+  function ilps_open_nav() {
+       var x ="category";
   if (document.getElementById("nav_" + x).style.display == "block") {
     ilps_close_nav(x);
   } else {
@@ -48,12 +53,14 @@ $(document).ready(function(){
   }
 }
 function ilps_close_nav(x) {
+     var x ="category";
   document.getElementById("nav_" + x).style.display = "none";
   if (document.getElementById("navbtn_" + x)) {
     document.getElementById("navbtn_" + x).getElementsByTagName("i")[0].style.display = "inline";
     document.getElementById("navbtn_" + x).getElementsByTagName("i")[1].style.display = "none";
   }
 }
+  
 
 // This for form validation 
 

@@ -1,8 +1,7 @@
-<div style="display: none">
 <?php
 include $_SERVER['DOCUMENT_ROOT'] . '/ILSP-group-final-project/master/header.php';
 ?>
-</div>
+
 <style>
     .navbar-login
 {
@@ -69,76 +68,7 @@ span.num {
     
     
  
-<div class="navbar navbar-default navbar-fixed-top" role="navigation">
-    <div class="container"> 
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span> 
-            </button>
-            <a target="_blank" href="#" class="navbar-brand">My Acount.</a>
-        </div>
-        <div class="collapse navbar-collapse">
-            <ul class="nav navbar-nav">
-                
-                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Service
-                    <span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Add service</a></li>
-                        <li><a href="#">updated service</a></li>
-                    </ul>
-                     
-                 </li>   
-                 
-             </ul>
-            <ul class="nav navbar-nav navbar-right">
-  
-<a class="fa fa-globe">
-  <span class="fa fa-comment"></span>
-  <span class="num">2</span>
-</a>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <span class="glyphicon glyphicon-user"></span>
-                        <strong>Eyob</strong>
-                        <span class="glyphicon glyphicon-chevron-down"></span>
-                        <sup><span class="badge badge-info glyphicon glyphicon- ">3</span></sup>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li>
-                            <div class="navbar-login">
-                                <div class="row">
-                                    <div class="col-lg-4">
-                                        <p class="text-center">
-                                            <span class="glyphicon glyphicon-user icon-size"></span>
-                                        </p>
-                                    </div>
-                                    <div class="col-lg-8">
-                                        <p class="text-left"><strong>eyob zenebe</strong></p>
-                                        <p class="text-left small">eyobzenebe9@gmail.com</p>
-                                        <p class="text-left">
-                                            <a href="#" class="btn btn-primary btn-block btn-sm">Profile</a>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="divider navbar-login-session-bg"></li>
-                         <li><a href="#">Account Settings <span class="glyphicon glyphicon-cog pull-right"></span></a></li>
-                         <li><a href="#">notifications <span class="glyphicon  pull-right"></span></a></li>   
-           
-            
-            <li class="divider"></li>
-            <li><a href="#">Sign Out <span class="glyphicon glyphicon-log-out pull-right"></span></a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </div>
-</div>
+
 
 <!--organazetional info--> 
 <div class="jumbotron" id="ac" text-center >

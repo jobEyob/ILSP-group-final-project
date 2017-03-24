@@ -1,15 +1,58 @@
-<?php require_once $_SERVER['DOCUMENT_ROOT']. '/ILSP-group-final-project/core/init.php';   ?>
+
 <?php
-if(Input::exists()){
-    echo 'test';
+include $_SERVER['DOCUMENT_ROOT'] . '/ILSP-group-final-project/master/header.php';
+?>
+
+<div>
+    <h1> &nbsp;</h1>
+      
+<?php
+if(Token::check(Input::get('token'))){
+    if(Input::exists()){
+        $validate= new Validate();
+        $validation=$validate->check($_POST, array(
+            'username'=>array(
+                'required' => true 
+                ),
+            
+            'password' => array(
+                'required' => true,
+                 )
+            
+            
+        ));
+    }
+
+if($validation->passed()){
+    $user=new User();
+     $login=$user->login(Input::get('username'), Input::get('password'));
+     if($login){
+         $path=$_SERVER['DOCUMENT_ROOT'] . '/ILSP-group-final-project/';
+         Redirect::to('../Acount/index.php');
+     } else {
+         echo 'login falde';
+     }
+    
+} else {
+    foreach ($validation->errors() as $error){
+        echo $error , '<br>';
+    }
+}
 }
  ?>
+</div>
 <style>
     @import url(http://fonts.googleapis.com/css?family=Roboto);
 
 /****** LOGIN MODAL ******/
+#login{
+    margin-top: 15px;
+    
+}
+
 .loginmodal-container {
   padding: 30px;
+  
   max-width: 350px;
   width: 100% !important;
   background-color: #F7F7F7;
@@ -100,8 +143,17 @@ if(Input::exists()){
 
 .login-help{
   font-size: 12px;
+  
 }
-    
+.forgot-password {
+    color: rgb(104, 145, 162);
+}
+
+.forgot-password:hover,
+.forgot-password:active,
+.forgot-password:focus{
+    color: rgb(12, 97, 33);
+}    
     
     
 </style>
@@ -113,13 +165,13 @@ if(Input::exists()){
 
 
 <!-- Modal -->
-<div id="myModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
+
+<div class="modal-dialog" id="login" >
 
     <!-- Modal content-->
-    <div class="loginmodal-container" style="padding-top: 20px;" >
+    <div class="loginmodal-container" style="padding-top: 15px;" >
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        
         <h1>Login to Your Account</h1><br>
         
       </div>
@@ -133,14 +185,19 @@ if(Input::exists()){
               <input  type="password"name="password" class="form-control" id="pwd" placeholder="password">
         </div>
       </div>
-           
+          <div class="checkbox">
+		<label>
+		<input name="remember" type="checkbox" value="Remember Me"> Remember Me
+		</label>
+	 </div> 
            
       <div class="modal-footer">
+        <input type="hidden" name="token" value="<?php echo Token::generate()?>" >  
         <input type="submit" name="login" class="login loginmodal-submit" value="Login" > 
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        
       </div>
     </form>
-        <div class="login-help">
+        <div class="forgot-password">
 	<a href="#">Forgot Password</a>
         </div>
         
@@ -148,5 +205,7 @@ if(Input::exists()){
     </div>
 
   </div>
-</div>
 
+
+<?php
+include $_SERVER['DOCUMENT_ROOT'] . '/ILSP-group-final-project/master/footer.php'; ?>

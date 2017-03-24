@@ -22,7 +22,7 @@
         echo "<p>Copyright &copy; 2017-" . date("Y") . " einfo.com</p>";
         ?>
     </footer> 
-    <?php include $_SERVER['DOCUMENT_ROOT'] . '/ILSP-group-final-project/pages/element/login.php'; ?>
+   
 </div>
 </body>
 </html>

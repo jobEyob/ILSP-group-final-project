@@ -2,7 +2,7 @@
 include $_SERVER['DOCUMENT_ROOT'] . '/ILSP-group-final-project/master/header.php';
 ?>
 
-
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/ILSP-group-final-project/pages/element/search.php'; ?>
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/ILSP-group-final-project/pages/slide.php'; ?>
 <div class="container-fluid">
     <!-- Container (advertasemant Section) -->
@@ -37,7 +37,8 @@ include $_SERVER['DOCUMENT_ROOT'] . '/ILSP-group-final-project/master/header.php
 
 <div class="container">
     <!-- Container (Contact Section) -->
-      
+    
+    
 </div>
 <!--for sher as -->
 <!-- Container (advertasemant Section) -->
