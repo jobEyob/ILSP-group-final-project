@@ -52,13 +52,7 @@ $title = "ILSP-final project";
       <div class="collapse navbar-collapse" id="myNavbar">
            <ul class="nav navbar-nav">
                             <li class="active"><a href="/ILSP-group-final-project/index.php">Home</a></li>
-                            <li><a href="javascript:void(0)"  onclick="ilps_open_nav()" id="navbtn_category">category
-
-                                    <i class="glyphicon glyphicon-menu-down" style="display: none;"></i>
-
-                                    <i class="glyphicon glyphicon-menu-up" style="display: inline;"></i>
-
-                                </a></li>
+                            
                             <!--the link for registration to home page contact is not working -->
                             <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Service
@@ -104,7 +98,7 @@ $title = "ILSP-final project";
                             </div>
                         </li>
                         <li class="divider navbar-login-session-bg"></li>
-                         <li><a href="#">Account Settings <span class="glyphicon glyphicon-cog pull-right"></span></a></li>
+                         <li><a href="/ILSP-group-final-project/Acount/acountsting.php">Account Settings <span class="glyphicon glyphicon-cog pull-right"></span></a></li>
                          <li><a href="#">notifications <span class="glyphicon  pull-right"></span></a></li>   
            
             
@@ -116,18 +110,7 @@ $title = "ILSP-final project";
         </div>
     </div>
         
-             <!--this for category list navbar-->
-        <nav id="nav_category" class="navbar" navbar-default style="display: none">
-            <div class="container-fluid">
-                <span style="float:right" onclick="ilps_close_nav()" class="glyphicon glyphicon-remove"></span><br>
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">hotel</a></li>
-                    <li><a href="#">Page 1</a></li>
-                    <li><a href="#">Page 2</a></li>
-                    <li><a href="#">Page 3</a></li>
-                </ul>
-            </div>
-        </nav>    
+         
                 
 </nav>
         </header>

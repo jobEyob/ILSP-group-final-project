@@ -4,43 +4,55 @@ include $_SERVER['DOCUMENT_ROOT'] . '/ILSP-group-final-project/master/header.php
 <div id="ac"  >
 <?php 
 $user =new User();
-if(!$user->isLoggedIn()){
-    Redirect::to(' ../index.php');
-}
+
+/******************************
+ * for change password
+ ******************************/
+
+  
 
 if(Input::exists()){
     if(Token::check(Input::get('token'))){
     $validate = new Validate();
         $validation = $validate->check($_POST, array(
-            /* $item */ 'username' => array(
+            /* $item */ 'password_current' => array(
                 'required' => true,
-                'min' => 2,
-                'max' => 20,
-                'unique' => 'users'
+                'min' => 6
+                
             ),
-            /* $item */ 'email' => array(
-                'required' => true
+            /* $item */ 'password_new' => array(
+                'required' => true,
+                'min' => 6
+                
+            ),
+            /* $item */ 'password_confirm' => array(
+                'required' => true,
+                'min' => 6,
+                'matches'=>'password_new'
+                
             )
             
         ));
         if ($validation->passed()) {
             
             try {
-                  $user->update('users',array(
-                    
-                   'username'=> Input::get('username'),
-                   'email'=> Input::get('email'),
-                   
+                  if(Hash::make(Input::get('password_current'), $user->data()->salt) !== $user->data()->password){
+                      echo 'your current password is wrong';  
+                  } else {
+                      $salt= Hash::salt(32);
+                      $user->update('users', array(
+                          'password'=> Hash::make(Input::get('password_new'), $salt),
+                          'salt'=>$salt
+                          
+                          
+                      ));
                  
-                ));
                 
-                 Session::flash('success', 'your acount updated Successfull');
+               Session::flash('success', 'your password changed Successfull');
                     //header("Location: ../index.php");
                     header("location: index.php");
-                    
-                    
-                    ob_end_flush();// this is opstional is for Turn of output buffering we Turn on biging of header.php
-                    
+               
+            }  
             } catch (Exception $exc) {
                 die ($exc->getMessage());
             }  
@@ -54,6 +66,8 @@ if(Input::exists()){
     }
 }
 
+
+
 ?>
 
 
@@ -66,37 +80,41 @@ if(Input::exists()){
     <div class="row">
         <div class="col-sm-2 col-md-3">    
             <div class="nav-container" id="Anav-container">
-                <ul class="nav" id="Anav">
+               <ul class="nav" id="Anav">
                     <li class="active">
                         <a href="/ILSP-group-final-project/Acount/acountsting.php"  >
                             <span class="icon-home"></span>
-                            <span class="text">General</span>
+                            <span class="text" >General</span>
                         </a>
                     </li>
                     <li>
-                        <a href="/ILSP-group-final-project/Acount/changepassword.php">
+                        <a href="/ILSP-group-final-project/Acount/changepassword.php" >
                             <span class="icon-user"></span>
                             <span class="text">Change password</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#" onclick="third()">
+                        <a href="#" >
                             <span class="icon-headphones"></span>
                             <span class="text">third</span>
                         </a>
                     </li>
                     
-                </ul>   
+                </ul> 
             </div>
 
         </div>   
         <div class="col-sm-10 col-md-9">
 
-            <fieldset id="first">
+           
+            
+           
+            <!-- field set 2 -->
+            <fieldset id="second">
 
                 <div class="panel-success">
                     <div class="panel-heading">
-                        <p>Generale account sting</p>
+                        <p>Change password</p>
                     </div>
                     <div class="panel-body">
 
@@ -104,34 +122,31 @@ if(Input::exists()){
                             form
                         .............................-->
                         <form class="form-horizontal" action="" method="post">
-                            <div class="form-group">
-                                <label class="col-lg-3 control-label">Full name:</label>
-                                <div class="col-lg-8">
-                                    <input class="form-control" name="name" value="eyob zenebe" type="text">
-                                </div>
-                            </div>
                             
-                            
-                            <div class="form-group">
-                                <label class="col-lg-3 control-label">Email:</label>
-                                <div class="col-lg-8">
-                                    <input class="form-control" name="email" value="<?php echo escape($user->data()->email);  ?>" type="text">
-                                </div>
-                            </div>
 
                             <div class="form-group">
-                                <label class="col-md-3 control-label">Username:</label>
+                                <label class="col-md-3 control-label">Current password:</label>
                                 <div class="col-md-8">
-                                    <input class="form-control" name="username" value="<?php echo escape($user->data()->username);  ?>" type="text">
+                                    <input class="form-control" name="password_current" type="password">
                                 </div>
                             </div>
-                            
-                           
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">New Password:</label>
+                                <div class="col-md-8">
+                                    <input class="form-control" name="password_new" type="password">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Confirm password:</label>
+                                <div class="col-md-8">
+                                    <input class="form-control" name="password_confirm"  type="password">
+                                </div>
+                            </div>
                             <div class="form-group">
                                 <label class="col-md-3 control-label"></label>
                                 <div class="col-md-8">
                                     <input class="btn btn-primary" value="Save Changes" type="submit">
-                                    <input type="hidden" name="token" value="<?php echo Token::generate();  ?>" >
+                                    <input type="hidden" name="token" value="<?php echo Token::generate(); ?>" >
                                     <span></span>
                                     <input class="btn btn-default" value="Cancel" type="reset">
                                 </div>
@@ -143,7 +158,8 @@ if(Input::exists()){
                 </div> 
 
             </fieldset>   
-           
+            
+
         </div>   
         <!-- above this is content -->
     </div>
@@ -152,4 +168,3 @@ if(Input::exists()){
 <?php
 include $_SERVER['DOCUMENT_ROOT'] . '/ILSP-group-final-project/master/footer.php';
 ?>
-

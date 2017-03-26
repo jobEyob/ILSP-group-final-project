@@ -32,7 +32,9 @@ $(document).ready(function(){
   
   // this for category navegation with close option
     
-  
+/********************************
+ * for categoy
+ ********************************/  
   
 
   function ilps_open_nav() {
@@ -60,6 +62,38 @@ function ilps_close_nav(x) {
     document.getElementById("navbtn_" + x).getElementsByTagName("i")[1].style.display = "none";
   }
 }
+  
+/*********************************
+ * Acounting sting
+ ********************************/  
+
+  $('#Anav li').click(function () {
+
+        $(this).addClass('active')
+                .siblings()
+                .removeClass('active');
+
+    });
+
+    function first() {
+        document.getElementById("first").style.display = "block";
+        document.getElementById("second").style.display = "none";
+        document.getElementById("third").style.display = "none";
+    }
+    function second() {
+        document.getElementById("first").style.display = "none";
+        document.getElementById("second").style.display = "block";
+        document.getElementById("third").style.display = "none";
+    }
+    function third() {
+        document.getElementById("first").style.display = "none";
+        document.getElementById("second").style.display = "none";
+        document.getElementById("third").style.display = "block";
+    }
+ /*
+  * 
+  * end
+  */   
   
 
 // This for form validation 

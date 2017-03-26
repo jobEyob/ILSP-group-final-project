@@ -4,11 +4,13 @@ class User {
     private $_db,
             $_data,
             $_sessionName,
-            $_isLoggedIn;
+            $_isLoggedIn,
+            $_CookieName;
             
     function __construct($user=null) {
         $this->_db= DB::getInstance();
         $this->_sessionName= Config::get('session/session_name');
+        $this->_CookieName= Config::get('remember/cookie_name');
         
         if(!$user){
             if(Session::exists($this->_sessionName)){
@@ -25,11 +27,20 @@ class User {
             $this->find($user);
         }
     }
+    
+    public function update($tabel, $fields =array(), $id=null){
+        if(!$id && $this->isLoggedIn()){
+            $id= $this->data()->id;
+        }
+        if (!$this->_db->update($tabel, $id, $fields)){
+            throw new Exception("there problem in updating.");
+        }
+    }
 
     public function create($tabel, $fileds=array()){
        
         if(!$this->_db->insert($tabel, $fileds )){
-        throw new Exception('Ther poblame hapend');
+        throw new Exception('There poblame hapend.');
         }
     }
     
@@ -45,21 +56,55 @@ class User {
         return false;
     }
 
-     public function login($username=null, $password=null){
-       
-        $user= $this->find($username);
-        //print_r($this->_data);
-        if($user){
-            if($this->data()->password === Hash::make($password, $this->data()->salt)){
-               
-                Session::put($this->_sessionName, $this->data()->id);
-                return true;
+    public function login($username = null, $password = null, $remember = false) {
+
+        if (!$username && !$password && $this->exists()) { //this for user that chack remember me in last login time
+            Session::put($this->_sessionName, $this->data()->id);
+        } else {
+
+            $user = $this->find($username);
+            //print_r($this->_data);
+            if ($user) {
+                if ($this->data()->password === Hash::make($password, $this->data()->salt)) {
+
+                    Session::put($this->_sessionName, $this->data()->id);
+
+                    if ($remember) {
+                        $hash = Hash::uniqid();
+
+                        $hashCheck = $this->_db->get('users_session', array('user_id', '=', $this->data()->id));
+
+                        if (!$hashCheck->count()) {
+                            // $hash= Hash::uniqid();
+                            $this->_db->insert('users_session', array(
+                                'user_id' => $this->data()->id,
+                                'hash' => $hash
+                            ));
+                        } else {
+                            $hash = $hashCheck->first()->hash;
+                        }
+                        Cookie::put($this->_CookieName, $hash, Config::get('remember/cookie_expiry'));
+                    }
+
+                    return true;
+                }
             }
         }
         return false;
     }
+
+    
+    public function exists(){
+        return (!empty($this->_data)? true: false);
+    }
+
+        //for logout
     public function logout(){
+        
+        $this->_db->delete('users_session', array('user_id', "=", $this->data()->id)); // delete from users_session tabel by user id
+        
         Session::delete($this->_sessionName);
+        Cookie::delete($this->_CookieName); // for chack remember me // user in login time // for delete cookie from user computer
     }
 
         public function data(){
@@ -69,5 +114,7 @@ class User {
     public function isLoggedIn(){
         return $this->_isLoggedIn;
     }
+    
+   
     
 }

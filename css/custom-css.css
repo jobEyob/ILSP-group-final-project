@@ -108,6 +108,7 @@ body {
 }
 
 
+
     .navbar-login
 {
     width: 305px;
@@ -164,6 +165,62 @@ span.num {
      
      
 }
+
+/*
+.........................................
+
+Acount sting
+.........................................
+*/
+/*
+fieldset{
+        display: none;
+
+    }
+
+    #first{
+        display:block;
+
+    }   */
+   
+  .panel-success{
+        border: 1px solid #555;
+   }   
+
+#ac
+{
+   padding-top: 80px;
+    padding-bottom: 5px;
+}
+
+
+#acountsting
+{
+  margin-bottom: 200px;  
+     
+}
+#Anav  li{
+        height:50px; 
+        position:relative
+          
+        
+    }
+#Anav-container ul li a {
+        border-top: 1px solid rgba(255,255,255,0.1);
+        border-bottom: 1px solid black;
+        text-decoration:none;
+        display:block;
+        height:100%;
+        width:100%;
+        line-height:50px;
+        color:#bbb;
+        text-transform: uppercase;
+        font-weight: bold;
+        padding-left:2%;
+        border-left:5px solid transparent;
+        letter-spacing:1px;
+        transition: all 0.3s linear;
+    } 
 
 
     

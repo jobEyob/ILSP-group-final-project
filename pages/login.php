@@ -25,7 +25,8 @@ if(Token::check(Input::get('token'))){
 
 if($validation->passed()){
     $user=new User();
-     $login=$user->login(Input::get('username'), Input::get('password'));
+    $remember=(Input::get('remember') === 'on') ? true: false;
+     $login=$user->login(Input::get('username'), Input::get('password'), $remember);
      if($login){
          $path=$_SERVER['DOCUMENT_ROOT'] . '/ILSP-group-final-project/';
          Redirect::to('../Acount/index.php');
@@ -186,8 +187,8 @@ if($validation->passed()){
         </div>
       </div>
           <div class="checkbox">
-		<label>
-		<input name="remember" type="checkbox" value="Remember Me"> Remember Me
+              <label for="remember">
+                  <input name="remember" type="checkbox" id="remember"> Remember Me
 		</label>
 	 </div> 
            

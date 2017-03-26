@@ -64,12 +64,8 @@ span.num {
     
 </style>
     
-    
-    
-    
  
-
-
+ 
 <!--organazetional info--> 
 <div class="jumbotron" id="ac" text-center >
     <form class="form-inline">
@@ -80,6 +76,14 @@ span.num {
     
     </form>
 </div>
+<div>
+  <?php
+ if(Session::exists('success')){
+         echo  Session::flash('success') ;
+     }  ?>  
+    
+</div> 
+
 
 <div class="container">
 <ul class="nav nav-tabs">
