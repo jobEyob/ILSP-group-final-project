@@ -28,4 +28,16 @@ public static function get($item){
     }
     return '';
 }
+
+public static function getfile($submit_name ){
+    if(isset($_POST[$submit_name])){
+        return $_POST[$submit_name];
+    } else {
+        if (isset($_GET[$submit_name])){
+            return $_GET[$submit_name];
+        }
+    }
+    return '';
+}
+
 }

@@ -1,9 +1,14 @@
 <?php
 include $_SERVER['DOCUMENT_ROOT'] . '/ILSP-group-final-project/master/header.php';
+
+$user =new User();
+if(!$user->isLoggedIn()){
+    Redirect::to(' ../pages/login.php');
+}
 ?>
 <div id="ac"  >
 <?php 
-$user =new User();
+
 
 /******************************
  * for change password
@@ -60,8 +65,15 @@ if(Input::exists()){
             
         } else {
             foreach ($validation->errors() as $error) {
-                echo $error . '<br>';
-            }
+              //  echo $error . '<br>';
+                
+                 ?>
+                  <div class="alert alert-danger">
+                      <i class="glyphicon glyphicon-warning-sign"></i> &nbsp; <?php echo $error; ?>
+                  </div>
+                  <?php
+                
+            }//
         }
     }
 }

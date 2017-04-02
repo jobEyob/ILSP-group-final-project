@@ -117,7 +117,7 @@ $title = "ILSP-final project";
   <?php  
   }else {
  
-  echo '
+  ?>
   
 <header >
 
@@ -174,7 +174,7 @@ $title = "ILSP-final project";
         </header>
         
         
-  ';
+  <?php
       
   }
         ?>

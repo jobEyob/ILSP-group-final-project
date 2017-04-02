@@ -1,6 +1,14 @@
 <?php
 include $_SERVER['DOCUMENT_ROOT'] . '/ILSP-group-final-project/master/header.php';
+
+
+$user =new User();
+if(!$user->isLoggedIn()){
+    Redirect::to(' ../pages/login.php');
+}
+
 ?>
+
 
 <style>
     .navbar-login
@@ -69,10 +77,14 @@ span.num {
 <!--organazetional info--> 
 <div class="jumbotron" id="ac" text-center >
     <form class="form-inline">
-    
-        <label><img  src="/ILSP-group-final-project/image/natu-pension.jpg"  alt="logo" width="204" height="136" > </label>
+           <?php  $user->multiplyfinde('organizetions','user_id');
+          // echo $user->multiplydata()->logo_path; 
+             $logo=$user->multiplydata()->logo_path;
+             $org_name=$user->multiplydata()->org_name;
+           ?>
+        <label> <?php echo '<img  src="'.$logo.'"  alt="logo" width="160" height="160"  >' ?></label>
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            <label><h2 > organization name:</h2> </label>
+            <label><h2 > organization name:<?php echo escape($org_name);  ?> </h2> </label>
     
     </form>
 </div>
@@ -85,7 +97,7 @@ span.num {
 </div> 
 
 
-<div class="container">
+<div class="container" id="acount_index">
 <ul class="nav nav-tabs">
     <li class="active"><a data-toggle="tab" href="#home">Basic information</a></li>
     <li><a data-toggle="tab" href="#menu1">Service information</a></li>
@@ -110,3 +122,7 @@ span.num {
       
   </div>
 </div>
+
+<?php
+include $_SERVER['DOCUMENT_ROOT'] . '/ILSP-group-final-project/master/footer.php';
+?>

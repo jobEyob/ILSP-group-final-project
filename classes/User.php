@@ -5,7 +5,8 @@ class User {
             $_data,
             $_sessionName,
             $_isLoggedIn,
-            $_CookieName;
+            $_CookieName,
+            $_multipldata;
             
     function __construct($user=null) {
         $this->_db= DB::getInstance();
@@ -114,7 +115,24 @@ class User {
     public function isLoggedIn(){
         return $this->_isLoggedIn;
     }
+    /***************************************
+     *  this for get data from different tabel
+     ***************************************/
+    public function multiplyfinde($tabel,$id){
+        if($tabel && $id){
+           // $this->find();   
+        //$multipledata= $this->_db->get('organazetions', array('user_id', "=", $this->data()->id));
+          $multipledata= $this->_db->get($tabel, array($id, "=", $this->data()->id)); 
+        if ($multipledata->count()){
+            $this->_multipldata=$multipledata->first();
+            return true;
+        }
+        }
+        return false;
+    }
     
-   
+    public function multiplydata(){
+        return $this->_multipldata;
+    }
     
 }

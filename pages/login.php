@@ -28,7 +28,7 @@ if($validation->passed()){
     $remember=(Input::get('remember') === 'on') ? true: false;
      $login=$user->login(Input::get('username'), Input::get('password'), $remember);
      if($login){
-         $path=$_SERVER['DOCUMENT_ROOT'] . '/ILSP-group-final-project/';
+        // $path=$_SERVER['DOCUMENT_ROOT'] . '/ILSP-group-final-project/';
          Redirect::to('../Acount/index.php');
      } else {
          echo 'login falde';
@@ -43,11 +43,11 @@ if($validation->passed()){
  ?>
 </div>
 <style>
-    @import url(http://fonts.googleapis.com/css?family=Roboto);
+    /*@import url(http://fonts.googleapis.com/css?family=Roboto);
 
 /****** LOGIN MODAL ******/
 #login{
-    margin-top: 15px;
+    margin-top: 29px;
     
 }
 

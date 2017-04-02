@@ -90,10 +90,44 @@ function ilps_close_nav(x) {
         document.getElementById("second").style.display = "none";
         document.getElementById("third").style.display = "block";
     }
- /*
-  * 
-  * end
-  */   
+ 
+ /*******************************************
+  * for serviceform 
+  ******************************************/
+  /*---------------------------------------------------------*/
+
+
+//Function that executes on click of first next button
+    function next_step1() {
+        document.getElementById("first").style.display = "none";
+        document.getElementById("second").style.display = "block";
+        document.getElementById("active2").style.color = "green";
+    }
+
+//Function that executes on click of first previous button	
+    function prev_step1() {
+        document.getElementById("first").style.display = "block";
+        document.getElementById("second").style.display = "none";
+        document.getElementById("active1").style.color = "green";
+        document.getElementById("active2").style.color = "gray";
+    }
+
+//Function that executes on click of second next button	
+    function next_step2() {
+        document.getElementById("second").style.display = "none";
+        document.getElementById("third").style.display = "block";
+        document.getElementById("active3").style.color = "green";
+    }
+
+//Function that executes on click of second previous button 
+    function prev_step2() {
+        document.getElementById("third").style.display = "none";
+        document.getElementById("second").style.display = "block";
+        document.getElementById("active2").style.color = "green";
+        document.getElementById("active3").style.color = "gray";
+    }
+
+  //end
   
 
 // This for form validation 
@@ -258,4 +292,18 @@ if (parseInt(slidingDiv.style.right) > stopPosition) {
 slidingDiv.style.right = parseInt(slidingDiv.style.right) - 2 + "px";
 setTimeout(slideIn, 1);
 }
+}
+
+/**************************************
+ * image preview
+ **************************************/
+function preview_image(event) 
+{
+ var reader = new FileReader();
+ reader.onload = function()
+ {
+  var output = document.getElementById('output_image');
+  output.src = reader.result;
+ }
+ reader.readAsDataURL(event.target.files[0]);
 }

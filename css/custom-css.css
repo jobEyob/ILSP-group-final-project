@@ -103,7 +103,7 @@ body {
   
   
   input[type='file'] {
-  color: transparent;    /* Hides your "No File Selected" */
+  /* color: transparent;    /* Hides your "No File Selected" */
   /*direction: rtl;        /* Sets the Control to Right-To-Left */
 }
 
@@ -166,6 +166,7 @@ span.num {
      
 }
 
+
 /*
 .........................................
 
@@ -222,5 +223,12 @@ fieldset{
         transition: all 0.3s linear;
     } 
 
-
+    /*************************************************
+  
+    for validation error in all pages
     
+    **************************************************/
+    
+.error{
+color:red
+}

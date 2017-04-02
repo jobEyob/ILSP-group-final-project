@@ -8,6 +8,7 @@ class DB {
             $_error = false,
             $_results,
             $_count = 0;
+    
 
     private function __construct() {
         try {
@@ -78,6 +79,13 @@ class DB {
    public function get($table, $where){
        return $this->action('SELECT *', $table, $where); 
    } 
+   public function getAll($filde,$table){
+       $sql="SELECT {$filde} FROM {$table}";
+       if($this->query($sql)){
+           return true;
+       }
+       return false;
+   }
    public function results(){
        return $this->_results;
    }

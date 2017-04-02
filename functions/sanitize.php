@@ -1,9 +1,9 @@
 <?php 
-/*function escape($string){
+function escape($string){
     return htmlentities($string, ENT_QUOTES, '' );
-} */
+} 
 
-function escape($data){
+/*function escape($data){
   
   $data = trim($data);
   $data = stripslashes($data);
