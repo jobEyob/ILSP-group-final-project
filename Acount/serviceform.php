@@ -1,5 +1,9 @@
 <?php
     include $_SERVER['DOCUMENT_ROOT'] . '/ILSP-group-final-project/master/header.php';
+    
+    if(!$user->isLoggedIn()){
+    Redirect::to(' ../pages/login.php');
+}
  ?>
 <div id="ac">
     

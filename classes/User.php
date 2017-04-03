@@ -135,4 +135,32 @@ class User {
         return $this->_multipldata;
     }
     
+
+
+public function send_mail($email,$message,$subject)
+ {      
+  require_once ($_SERVER['DOCUMENT_ROOT'].'/ILSP-group-final-project/lib/Mailer/PHPMailerAutoload.php');
+  $mail = new PHPMailer();
+  $mail->IsSMTP(); 
+  $mail->SMTPDebug  = 0;                     
+  $mail->SMTPAuth   = true;                  
+  $mail->SMTPSecure = "ssl";                 
+  $mail->Host       = "smtp.gmail.com";      
+  $mail->Port       = 465;             
+  $mail->AddAddress($email);
+  $mail->Username="wegotogether01@gmail.com";  
+  $mail->Password="cancan01";            
+  $mail->SetFrom('wegotogether01@gmail.com','information location');
+  $mail->AddReplyTo("einfo.com","information location");
+  $mail->Subject    = $subject;
+  $mail->MsgHTML($message);
+  $mail->Send();
+ 
+if(!$mail->send()) {
+    echo 'Message could not be sent.';
+    echo 'Mailer Error: ' . $mail->ErrorInfo;
+} else {
+    echo 'Message has been sent';
+}
+ }
 }

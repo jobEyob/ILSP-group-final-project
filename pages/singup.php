@@ -90,7 +90,7 @@ $password_confirmError="";
                     <div class="form-group">
                         <label class="control-label col-sm-3" for="uname">username:</label>
                        <span class="error">* <?php echo $nameError;?></span>
-                        <div class="col-sm-6" inputGroupContainer>
+                        <div class="col-sm-5" inputGroupContainer>
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>    
                                 <input name="username" type="text" class="form-control" id="uname"
@@ -102,7 +102,7 @@ $password_confirmError="";
                     <div class="form-group">
                         <label class="col-md-3 control-label " for="email">E-Mail</label>  
                         <span class="error">* <?php echo $emailError;?></span>
-                        <div class="col-md-6 inputGroupContainer">
+                        <div class="col-md-5 inputGroupContainer">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
                                 <input name="email" id="email" placeholder="E-Mail Address" class="form-control" 
@@ -115,7 +115,7 @@ $password_confirmError="";
                     <div class="form-group">
                         <label class="control-label col-sm-3" for="password">Password:</label>
                         <span class="error">* <?php echo $passwordError;?></span>
-                        <div class="col-sm-6" inputGroupContainer>
+                        <div class="col-sm-5" inputGroupContainer>
                             <div class="input-group">
                              <span class="input-group-addon"><i class="glyphicon glyphicon glyphicon-lock"></i></span>   
                              <input name="password" type="password" class="form-control" id="password" placeholder="Enter password">
@@ -127,7 +127,7 @@ $password_confirmError="";
                     <div class="form-group">
                         <label class="control-label col-sm-3" for="cpwd">confirm Password:</label>
                         <span class="error">* <?php echo $password_confirmError;?></span>
-                        <div class="col-sm-6" inputGroupContainer >
+                        <div class="col-sm-5" inputGroupContainer >
                             <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon glyphicon-lock"></i></span>     
                             <input name="confirm_password" type="password" class="form-control" id="cpwd" placeholder="Enter password again">
