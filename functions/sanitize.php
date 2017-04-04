@@ -11,4 +11,4 @@ function escape($string){
   $data= htmlentities($data, ENT_QUOTES, '' ); 
     
   return $data;
-}
+} */

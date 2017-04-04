@@ -16,23 +16,23 @@ class Validate{
                 $item= escape($item); // senitizetion
                 //echo $value;
                 if($rule === 'required' && empty($value)){
-                    $this->addError("{$item} is required");
+                    $this->addError($item,"{$item} is required");
                 } else {
                     if (!empty($value)) {
                         switch ($rule) {
                             case 'min':
                                 if (strlen($value) < $rule_value) {
-                                    $this->addError("$item must be minimum of $rule_value");
+                                    $this->addError($item,"$item must be minimum of $rule_value");
                                 }
                                 break;
                             case 'max':
                                 if (strlen($value) > $rule_value) {
-                                    $this->addError("$item must be maximum of $rule_value");
+                                    $this->addError($item,"$item must be maximum of $rule_value");
                                 }
                                 break;
                             case 'matches':
                                 if ($value !== $sourse[$rule_value]){
-                                    $this->addError("{$rule_value} is not maches ");
+                                    $this->addError($item,"{$rule_value} is not maches ");
                                 }
                                 break;
                             case 'unique':
@@ -41,7 +41,7 @@ class Validate{
                                 if($check->count()){ 
                    //$check call DB class metode count. count check if there seame item exist it addError to error array
                                     
-                                    $this->addError("{$item} Username already taken. Choose another one ");
+                                    $this->addError($item,"{$item} Username already taken. Choose another one ");
                                 }
                                 break;
 
@@ -58,8 +58,8 @@ class Validate{
         return $this;
         
     }
-    private function addError($error){ 
-        $this->_errors[]=$error;  //this for add error to  $_errors = array() array
+    private function addError($key,$error){ 
+        $this->_errors[$key]=$error;  //this for add error to  $_errors = array() array
     }
     
     public function errors(){

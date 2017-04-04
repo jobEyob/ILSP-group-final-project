@@ -129,7 +129,7 @@ function ilps_close_nav(x) {
 
   //end
   
-
+/*
 // This for form validation 
 
 //function formValidation(){
