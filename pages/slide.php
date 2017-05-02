@@ -9,13 +9,13 @@
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
     <div class="item active">
-        <img src="/ILSP-group-final-project/image/natu-pension.jpg" height="15px" alt="Image">
+        <img src="/ILSP-group-final-project/image/natu-pension.jpg" height="6px" alt="Image">
       <div class="carousel-caption">
         ...
       </div>
     </div>
     <div class="item">
-     <img src="/ILSP-group-final-project/image/natu-pension.jpg" height="15px" alt="Image">
+     <img src="/ILSP-group-final-project/image/natu-pension.jpg" height="6px" alt="Image">
       <div class="carousel-caption">
         ...
       </div>

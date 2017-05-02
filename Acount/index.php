@@ -79,13 +79,18 @@ span.num {
     <form class="form-inline">
            <?php  $user->multiplyfinde('organizetions','user_id');
           // echo $user->multiplydata()->logo_path; 
+            $exist=$user->multiplydata(); //to chack recored exist about organazation
+           if($exist == ''){
+               echo '<h2>you have no record about your organizetion </h2>';
+           }else{
              $logo=$user->multiplydata()->logo_path;
              $org_name=$user->multiplydata()->org_name;
+           
            ?>
         <label> <?php echo '<img  src="'.$logo.'"  alt="logo" width="160" height="160"  >' ?></label>
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             <label><h2 > organization name:<?php echo escape($org_name);  ?> </h2> </label>
-    
+           <?php } ?>
     </form>
 </div>
 <div>

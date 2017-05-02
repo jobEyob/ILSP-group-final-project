@@ -6,7 +6,8 @@ class User {
             $_sessionName,
             $_isLoggedIn,
             $_CookieName,
-            $_multipldata;
+            $_multipldata,
+            $_searchdata;
             
     function __construct($user=null) {
         $this->_db= DB::getInstance();
@@ -134,10 +135,43 @@ class User {
     public function multiplydata(){
         return $this->_multipldata;
     }
+    /*
+    public function multiplyAll($filde,$tabel){
+        if($tabel && $filde){
+           // $this->find();   
+        //$multipledata= $this->_db->get('organazetions', array('user_id', "=", $this->data()->id));
+          $multipledata= $this->_db->getAll($filde,$tabel); 
+        if ($multipledata->count()){
+            $this->_multipldata=$multipledata->first();
+            return true;
+        }
+        }
+        return false;
+    }
     
+    public function multiplydataAll(){
+        return $this->_multipldata;
+    }   */
+    
+    public function search($tabel,$filde,$input){
+        if($tabel && $filde && $input){
+        $search= $this->_db->serarch_data($tabel,$filde,$input);
+        if($search->count()){
+            $this->_searchdata=$search;
+            return true;
+        } 
+        }
+        return false;
+    }
+   public function searchdata(){
+       return $this->_searchdata;
+   }
 
 
-public function send_mail($email,$message,$subject)
+   
+
+
+    public function send_mail($email,$message,$subject)
  {      
   require_once ($_SERVER['DOCUMENT_ROOT'].'/ILSP-group-final-project/lib/Mailer/PHPMailerAutoload.php');
   $mail = new PHPMailer();

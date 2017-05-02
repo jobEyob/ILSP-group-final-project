@@ -3,7 +3,16 @@ include $_SERVER['DOCUMENT_ROOT'] . '/ILSP-group-final-project/master/header.php
 ?>
 
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/ILSP-group-final-project/pages/element/search.php'; ?>
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/ILSP-group-final-project/pages/slide.php'; ?>
+
+<div id="result">
+    
+</div>
+
+<div class="pagination" id="pagination" >  </div>
+
+<div id="after_search">
+<?php // include $_SERVER['DOCUMENT_ROOT'] . '/ILSP-group-final-project/pages/slide.php'; ?>
+
 <div class="container-fluid">
     <!-- Container (advertasemant Section) -->
     <div id="portfolio" class="container-fluid text-center bg-grey">
@@ -71,7 +80,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/ILSP-group-final-project/master/header.php
     </div>
 </div>
 
-
+</div>
 
 <?php
 include $_SERVER['DOCUMENT_ROOT'] . '/ILSP-group-final-project/master/footer.php';

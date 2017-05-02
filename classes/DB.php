@@ -7,10 +7,13 @@ class DB {
             $_query,
             $_error = false,
             $_results,
-            $_count = 0;
-    
+            $_count = 0
+            ;
+    public $_and='', $position='', $item_per_page='';
 
-    private function __construct() {
+
+
+            private function __construct() {
         try {
             
             $username = config::get('mysql/username');
@@ -41,8 +44,11 @@ class DB {
                     $this->_query->bindValue($x, $param);
 
                     $x++;
+                   // print_r($this->_query);
                 }
             }
+            
+            
             if ($this->_query->execute()) {
 
                 $this->_results = $this->_query->fetchAll(PDO::FETCH_OBJ); //results is storde here
@@ -58,7 +64,7 @@ class DB {
     //this function do teack action like select,update delete ..
     public function action($action, $table, $where = array() ){
         if(count($where)===3){
-            $operators= array('=', '>', '<', '>=', '=<');
+            $operators= array('=', '>', '<', '>=', '=<','LIKE');
             
             $filed    =$where[0]; 
             $operator =$where[1];
@@ -86,6 +92,88 @@ class DB {
        }
        return false;
    }
+   public function joinget($filde){
+       //$sql="SELECT {$filde} FROM {$table}";
+       $sql="SELECT `organizetions`.`*`, `address`.`*`,`locations`.`*`,`services`.`*`
+FROM `organizetions`
+INNER JOIN `address` ON 
+`organizetions`.`id`=
+`address`.`org_id`
+INNER JOIN `locations` ON
+`organizetions`.`id`=
+`locations`.`org_id`
+INNER JOIN `services` ON
+`organizetions`.`id`=
+`services`.`org_id`
+WHERE `org_name`= '$filde'";
+       
+       if($this->query($sql)){
+           return true;
+       }
+       return false;
+   }
+   
+  public function andget($filde,$_and,$position,$item_per_page){
+       //$sql="SELECT {$filde} FROM {$table}";
+       $sql="SELECT `organizetions`.`*`, `address`.`*`,`locations`.`*`,`services`.`*`
+FROM `organizetions`
+INNER JOIN `address` ON 
+`organizetions`.`id`=
+`address`.`org_id`
+INNER JOIN `locations` ON
+`organizetions`.`id`=
+`locations`.`org_id`
+INNER JOIN `services` ON
+`organizetions`.`id`=
+`services`.`org_id`
+WHERE `category`= '$filde' ";
+      if($_and!=""){
+           $sql .= "AND `city`='$_and' ORDER BY `category` ASC LIMIT $position, $item_per_page ";
+       }elseif($item_per_page!=""){
+          $sql .="ORDER BY `category` ASC LIMIT $position, $item_per_page";
+      } else {
+          $sql .="ORDER BY `category` ASC ";
+      }
+       
+       if($this->query($sql)){
+           return true;
+       }
+       return false;
+   }
+   public function andtotalget($filde,$_and){
+       //$sql="SELECT {$filde} FROM {$table}";
+       $sql="SELECT `organizetions`.`*`, `address`.`*`,`locations`.`*`,`services`.`*`
+FROM `organizetions`
+INNER JOIN `address` ON 
+`organizetions`.`id`=
+`address`.`org_id`
+INNER JOIN `locations` ON
+`organizetions`.`id`=
+`locations`.`org_id`
+INNER JOIN `services` ON
+`organizetions`.`id`=
+`services`.`org_id`
+WHERE `category`= '$filde' ";
+      if($_and!=""){
+           $sql .= "AND `city`='$_and' ORDER BY `category`  ";
+       }
+       
+       if($this->query($sql)){
+           return true;
+       }
+       return false;
+   }
+   /*public function serarch_data($table,$filde,$input){
+       $sql= "SELECT * FROM {$table} WHERE {$filde} LIKE:$input ";
+      // print_r($sql);
+        $term = ". '%'";
+       if($this->query($sql, array($term))){
+           return true;
+       }
+       return false;
+   } */
+   
+   
    public function results(){
        return $this->_results;
    }

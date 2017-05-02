@@ -50,7 +50,7 @@ $password_confirmError="";
                 
                  Session::flash('success', 'your acount crated Successfull');
                     //header("Location: ../index.php");
-                    header("location: ../well.php");
+                    header("location: login.php");
                     
                     
                     ob_end_flush();// this is opstional is for Turn of output buffering we Turn on biging of header.php
@@ -61,16 +61,33 @@ $password_confirmError="";
                     
             
         } else {
-            //foreach ($validation->errors() as $error) {
-               // echo $error . '<br>';
+            foreach ($validation->errors() as $x=>$x_value) {
+               
+                switch ($x){
+                    case 'username':
+                        $nameError=$x_value;
+                        break;
+                    case 'email':
+                        $emailError=$x_value;
+                        break;
+                    case 'password':
+                        $passwordError=$x_value;
+                        break;
+                    case 'confirm_password':
+                        $password_confirmError=$x_value;
+                        break;
+                    default :
+                        break;
+                    
+                }
                 
-           // }
-           //print_r($validation->errors()[0]);
+            }
+           /*print_r($validation->errors()[0]);
             $nameError=$validation->errors()[0];
             //print_r($usename_error);
             $emailError=$validation->errors()[1];
             $passwordError=$validation->errors()[2];
-            $password_confirmError=$validation->errors()[3];
+            $password_confirmError=$validation->errors()[3]; */ 
         }
     }
 }
@@ -138,7 +155,7 @@ $password_confirmError="";
                     <div class="form-group">
                         <div class="col-sm-offset-3 col-sm-9">
                             <input type="hidden" name="token" value="<?php echo Token::generate()?>" >
-                            <input type="submit" class="btn btn-default" value="Sing in">
+                            <input type="submit" class="btn btn-default" value="Sing up">
                         </div>
                     </div>
                 </form>

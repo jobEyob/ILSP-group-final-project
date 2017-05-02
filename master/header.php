@@ -21,8 +21,16 @@ $title = "ILSP-final project";
         <script src="/ILSP-group-final-project/lib/js/jquery.min.js"></script>
         <script src="/ILSP-group-final-project/lib/js/bootstrap.min.js"></script>
         <script src="/ILSP-group-final-project/js/custom-js.js"></script>
-         <script src="/ILSP-group-final-project/js/slider.js"></script>
-         
+        <script src="/ILSP-group-final-project/js/slider.js"></script>
+        <link rel="stylesheet" href="/ILSP-group-final-project/lib/css/jquery-ui.css">
+        <link rel="stylesheet" href="/ILSP-group-final-project/lib/css/jquery-ui-timepicker-addon.css">
+        <script src="/ILSP-group-final-project/lib/js/jquery-ui.js"></script>
+        <script src="/ILSP-group-final-project/lib/js/jquery-ui-timepicker-addon.js"></script>
+        <script src="/ILSP-group-final-project/lib/js/jquery.bootpag.min.js"></script> 
+         <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCBfNj154XXsUT8pOYTI26rg5UhpI5DWDo&callback=initMap">
+    </script>
+                                                      
     </head>
     <!--head section end her --->
     <body id="myPage">
@@ -98,8 +106,13 @@ $title = "ILSP-final project";
                             </div>
                         </li>
                         <li class="divider navbar-login-session-bg"></li>
-                         <li><a href="/ILSP-group-final-project/Acount/acountsting.php">Account Settings <span class="glyphicon glyphicon-cog pull-right"></span></a></li>
-                         <li><a href="#">notifications <span class="glyphicon  pull-right"></span></a></li>   
+                        <li role="separator" class="divider"></li>
+                       <li><a href="/ILSP-group-final-project/Acount/acountsting.php">
+                        Account Settings <span class="glyphicon glyphicon-cog pull-right"></span></a></li>
+                         <li role="separator" class="divider"></li>
+                         <li class="divider"></li>
+                         <li><a href="#">notifications <span class="glyphicon  pull-right"></span></a></li>
+                         <li role="separator" class="divider"></li>   
            
             
             <li class="divider"></li>
@@ -160,12 +173,26 @@ $title = "ILSP-final project";
         <nav id="nav_category" class="navbar" navbar-default style="display: none">
             <div class="container-fluid">
                 <span style="float:right" onclick="ilps_close_nav()" class="glyphicon glyphicon-remove"></span><br>
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">hotel</a></li>
-                    <li><a href="#">Page 1</a></li>
-                    <li><a href="#">Page 2</a></li>
-                    <li><a href="#">Page 3</a></li>
+                <ul class="nav navbar-nav" id="category_list">
+                   <?php 
+                       $user=DB::getInstance();
+
+        $user->getAll('category_name','services_category');
+      
+      if ($user->count()){
+          $val=$user->results();
+       
+          asort($val);
+         foreach ($val as $x_value) {
+            $category= $x_value->category_name;   
+            
+           // echo '<li><a href="/ILSP-group-final-project/pages/search-results.php?name='. $x_value->category_name .'">'. $x_value->category_name .'</a></li>';
+              echo '<li  ><a href="#">'. $x_value->category_name .'</a></li>';
+            
+         }                 
+      } ?> 
                 </ul>
+               
             </div>
         </nav>   
                 

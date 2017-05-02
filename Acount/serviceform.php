@@ -8,10 +8,9 @@
 <div id="ac">
     
 <?php
-$nameError ="";
-$emailError ="";
-$passwordError="";
-$password_confirmError="";
+$nameError ="";$emailError ="";$regionError="";$phoneError="";$tellError="";$faxError="";$cityError="";
+$sub_cityError="";$websiteError="";$org_decError="";$categoryError="";$s_in_dayError="";$s_in_weekError="";
+$open_timeError="";$close_timeError="";$s_yearError="";$s_decError="";$latitudeError="";$longitudeError="";
 
 
    $in= new Input();
@@ -82,7 +81,7 @@ $password_confirmError="";
                     $filename=$_FILES['org_logo']['name'];
                     $filetype=$_FILES['org_logo']['type'];
                     $filepath=$_SERVER['DOCUMENT_ROOT']. '/ILSP-group-final-project/image/orgLogo/'.$filename;
-                    $filepath_db='/ILSP-group-final-project/image/orgLogo/'.$filename;
+                    $filepath_db='/image/orgLogo/'.$filename;
                     move_uploaded_file($filetmp, $filepath);
                     
                     $fname=$filename;
@@ -119,7 +118,7 @@ $password_confirmError="";
                 
                 $user->create('services', array(
                     'org_id' => $user->multiplydata()->id,
-                    'category_id'     => Input::get('category'),
+                    'category'     => Input::get('category'),
                     'service_in_day'  => Input::get('service_in_day'),
                     'service_in_week' => Input::get('service_in_week'),
                     'open_time'       => Input::get('open_time'),
@@ -152,9 +151,67 @@ $password_confirmError="";
                     
             
         } else {
-          foreach ($validation->errors() as $error) {
-            echo $error . ',';
-                
+          foreach ($validation->errors() as $x=>$x_value) {
+            
+              switch ($x) {
+                  case 'org_name':
+                  $nameError=$x_value;
+                      break;
+                   case 'region':
+                  $regionError=$x_value;
+                      break;
+                   case 'phone':
+                  $phoneError=$x_value;
+                      break;
+                   case 'tell':
+                  $tellError=$x_value;
+                      break;
+                   case 'fax':
+                  $faxError=$x_value;
+                      break;
+                   case 'city':
+                  $cityError=$x_value;
+                      break;
+                   case 'sub_city':
+                  $sub_cityError=$x_value;
+                      break;
+                   case 'website':
+                  $websiteError=$x_value;
+                      break;
+                   case 'org_dec':
+                  $org_decError=$x_value;
+                      break;
+                  case 'category':
+                  $categoryError=$x_value;
+                      break;
+                  case 'service_in_day':
+                  $s_in_dayError=$x_value;
+                      break;
+                  case 'service_in_week':
+                  $s_in_weekError=$x_value;
+                      break;
+                  case 'open_time':
+                  $open_timeError=$x_value;
+                      break;
+                  case 'close_time':
+                  $close_timeError=$x_value;
+                      break;
+                  case 'service_year':
+                  $s_yearError=$x_value;
+                      break;
+                  case 'service_dec':
+                  $s_decError=$x_value;
+                      break;
+                  case 'latitude':
+                  $latitudeError=$x_value;
+                      break;
+                  case 'longitude':
+                  $longitudeError=$x_value;
+                      break;
+
+                  default:
+                      break;
+              }
           }
            
         }
@@ -165,89 +222,6 @@ $password_confirmError="";
 
     ?>
 </div>  
-
-<style>
-   #service_main{
-
-
-        margin-top:30px;
-    }    
-
-    #progressbar{
-        margin:0;
-        padding:0;
-        font-size:18px;
-    }
-
-    #active1{
-        color:greenyellow;
-    }    
-
-   #progressbar li{
-        margin-right:52px;
-        display:inline;
-        color:#c1c5cc;
-        font-family: 'Droid Serif', serif;
-
-    }
-    fieldset{
-        display: none;
-
-    }
-
-    #first{
-        display:block;
-
-    }
-    #third {
-        display: none;
-    }
-    input[type=submit],
-    input[type=button]{
-        width: 120px;
-        margin:15px 25px;
-        padding: 5px;
-        height: 40px;
-        background-color: sienna;
-        border: none;
-        border-radius: 4px;
-        color: white;
-        font-family: 'Droid Serif', serif;
-    }       
-   fieldset h2,p{
-        text-align:center;
-        font-family: 'Droid Serif', serif;
-    }   
-    /******************************
-    * image prviwe
-    *******************************/
- #output_image
- {
- max-width:120px;
- max-height: 120px;
-}
-
-    /*------------------------------------------
-    for map
-    ............................................*/
-    #formap
-    {
-        height: 100%;
-        margin: 0;
-        padding: 7px;
-
-    }
-
-    #map {
-        width:100%;
-        height:500px
-
-    }
-
-</style>
-
-
-
 
 <script>
       function initMap() {
@@ -276,9 +250,7 @@ $password_confirmError="";
             });                                    
         }
     </script>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCBfNj154XXsUT8pOYTI26rg5UhpI5DWDo&callback=initMap">
-    </script>
+   
 
 <div class="container">
     <div  class="main" id="service_main">
@@ -298,11 +270,13 @@ $password_confirmError="";
                     <div class="col-md-4">   <img id="output_image"/> </div> 
                 </div>
                 <div class="form-group">
-                    <label class="col-md-4 control-label">Organization Name</label>  
+                    <label class="col-md-4 control-label">Organization Name</label> 
+                    <span class="error"> <?php echo $nameError;?></span>
                     <div class="col-md-4 inputGroupContainer">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                            <input  name="org_name" placeholder="org Name" class="form-control"  type="text">
+                            <input  name="org_name" placeholder="org Name" class="form-control"  type="text" 
+                                    value="<?php echo escape(Input::get('org_name')); ?>" >
                         </div>
                     </div>
                 </div>
@@ -312,7 +286,7 @@ $password_confirmError="";
                     <div class="col-md-4 inputGroupContainer">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-camera"></i></span>
-                     <input  name="org_logo"  class="form-control"  type="file" accept="image/*" onchange="preview_image(event)"  >
+                     <input  name="org_logo"    type="file" accept="image/*" onchange="preview_image(event)"  >
                         </div>
                     </div>
                     
@@ -320,86 +294,102 @@ $password_confirmError="";
 
 
                 <div class="form-group">
-                    <label class="col-md-4 control-label">Region</label>  
+                    <label class="col-md-4 control-label">Region</label> 
+                     <span class="error"> <?php echo $regionError;?></span>
                     <div class="col-md-4 inputGroupContainer">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-                            <input name="region" placeholder="region" class="form-control" type="text">
+                            <input name="region" placeholder="region" class="form-control" type="text" 
+                                value="<?php echo escape(Input::get('region')); ?>"    >
                         </div>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-md-4 control-label">Phone #</label>  
+                    <label class="col-md-4 control-label">Phone</label> 
+                     <span class="error"> <?php echo $phoneError;?></span>
                     <div class="col-md-4 inputGroupContainer">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-                            <input name="phone" placeholder="(+251).." class="form-control" type="text">
+                            <input name="phone" placeholder="(+251).." class="form-control" type="text" 
+                                  value="<?php echo escape(Input::get('phone')); ?>"  >
                         </div>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-md-4 control-label">Tell #</label>  
+                    <label class="col-md-4 control-label">Tell</label> 
+                     <span class="error"> <?php echo $tellError;?></span>
                     <div class="col-md-4 inputGroupContainer">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-                            <input name="tell" placeholder="(011).." class="form-control" type="text">
+                            <input name="tell" placeholder="(011).." class="form-control" type="text" 
+                                  value="<?php echo escape(Input::get('tell')); ?>"  >
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-md-4 control-label">fax</label>  
+                     <span class="error"> <?php echo $faxError ;?></span>
                     <div class="col-md-4 inputGroupContainer">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-                            <input name="fax" placeholder="(010).." class="form-control" type="text">
+                            <input name="fax" placeholder="(010).." class="form-control" type="text" 
+                                  value="<?php echo escape(Input::get('fax')); ?>"  >
                         </div>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label class="col-md-4 control-label">City</label>  
+                     <span class="error"> <?php echo $cityError ;?></span>
                     <div class="col-md-4 inputGroupContainer">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-                            <input name="city" placeholder="city" class="form-control"  type="text">
+                            <input name="city" placeholder="city" class="form-control"  type="text" 
+                                 value="<?php echo escape(Input::get('city')); ?>"   >
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-md-4 control-label">sub City</label>  
+                     <span class="error"> <?php echo $sub_cityError;?></span>
                     <div class="col-md-4 inputGroupContainer">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-                            <input name="sub_city" placeholder="sub city" class="form-control"  type="text">
+                            <input name="sub_city" placeholder="sub city" class="form-control"  type="text" 
+                                  value="<?php echo escape(Input::get('sub_city')); ?>"  >
                         </div>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-md-4 control-label">Website or domain name</label>  
+                    <label class="col-md-4 control-label">website</label>
+                     <span class="error"> <?php echo $websiteError;?></span>
                     <div class="col-md-4 inputGroupContainer">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
-                            <input name="website" placeholder="Website or domain name" class="form-control" type="text">
+                            <input name="website" placeholder="Website or domain name" class="form-control" type="text" 
+                                 value="<?php echo escape(Input::get('website')); ?>"   >
                         </div>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label class="col-md-4 control-label">organization Description</label>
+                    <span class="error"> <?php echo $org_decError ?></span>
                     <div class="col-md-4 inputGroupContainer">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                            <textarea class="form-control" name="org_dec" placeholder="organization Description"></textarea>
+                            <textarea class="form-control" name="org_dec" placeholder="organization Description" 
+                                   value="<?php echo escape(Input::get('org_dec')); ?>"    ></textarea>
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-md-4 control-label"></label>
                     <div class="col-md-4 inputGroupContainer">
-                        <div class="input-group">
+                        <div class="input-group" id="sform" >
                             <input type="button" id="next_btn1" value="Next" onclick="next_step1()" />  
                         </div>
                     </div>
@@ -413,6 +403,7 @@ $password_confirmError="";
 
                <div class="form-group">
                     <label class="col-md-4 control-label" for="category"  >select category</label>
+                    <span class="error"> <?php echo $categoryError ?></span>
                     <div class="col-md-4 inputGroupContainer">   
 
                         <select  class="form-control" id="category" name="category" >
@@ -443,17 +434,15 @@ $password_confirmError="";
                 </div>
 
         
-      <link rel="stylesheet" href="/ILSP-group-final-project/lib/css/jquery-ui.css">
-      <link rel="stylesheet" href="/ILSP-group-final-project/lib/css/jquery-ui-timepicker-addon.css">
-       <script src="/ILSP-group-final-project/lib/js/jquery-ui.js"></script>
-       <script src="/ILSP-group-final-project/lib/js/jquery-ui-timepicker-addon.js"> </script>   
+      
        
            
                
              
        
        <div class="form-group">
-                    <label class="col-md-4 control-label">Service time</label>  
+                    <label class="col-md-4 control-label">Service time</label> 
+                  
                     <div class="col-md-2 inputGroupContainer">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
@@ -470,7 +459,8 @@ $password_confirmError="";
               
                     
       <div class="form-group">
-                    <label class="col-md-4 control-label">open time</label>  
+                    <label class="col-md-4 control-label">open time</label>
+                    <span class="error"> <?php echo $open_timeError ?></span>
                     <div class="col-md-4 inputGroupContainer">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
@@ -481,6 +471,7 @@ $password_confirmError="";
       
       <div class="form-group">
                     <label class="col-md-4 control-label">close time</label>  
+                    <span class="error"> <?php echo $close_timeError ?></span>
                     <div class="col-md-4 inputGroupContainer">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
@@ -489,7 +480,8 @@ $password_confirmError="";
                     </div>
                 </div>
        <div class="form-group">
-                    <label class="col-md-4 control-label">service year</label>  
+                    <label class="col-md-4 control-label">service year</label> 
+                    <span class="error"> <?php echo $s_yearError ?></span>
                     <div class="col-md-4 inputGroupContainer">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
@@ -500,6 +492,7 @@ $password_confirmError="";
       
       <div class="form-group">
                     <label class="col-md-4 control-label">service Description</label>
+                    <span class="error"> <?php echo $s_decError ?></span>
                     <div class="col-md-4 inputGroupContainer">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
@@ -510,7 +503,7 @@ $password_confirmError="";
                 
                 <div class="form-group">
                     <label class="col-md-4 control-label"> </label>  
-                    <div class="col-md-4 inputGroupContainer">    
+                    <div class="col-md-4 inputGroupContainer" id="sform" >    
                         <input type="button" id="pre_btn1" value="Previous" onclick="prev_step1()"/>
                         <input type="button" name="next" id="next_btn2" value="Next" onclick="next_step2(); initMap();" />
                     </div>
@@ -524,12 +517,26 @@ $password_confirmError="";
 
                 <div class=" form-inline">
 
-                    <label class="col-md-4 control-label" for="latitud">latitude:</label>
-                    <input type="latitude" name="latitude" class="form-control" id="Latitude" value="">
-
+                    <label class="col-md-3 control-label" for="latitud">latitude:</label>
+                     
+                    <input type="latitude" name="latitude" class="form-control" id="Latitude" value=""> 
+                     
                     <label  for="longitude">longitude:</label>
-                    <input type="longitude" name="longitude" class="form-control" id="Longitude" value="">
+                    
+                    <input type="longitude" name="longitude" class="form-control" id="Longitude" value=""> 
+                    
                 </div>
+                <!--  for error display    -->
+                <div class=" form-inline">
+                    <label class="col-md-3 control-label" for="latitud"></label>
+                     <span class="error"> <?php echo $latitudeError ?></span> &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+                     <input type="hidden" name="latitude" class="form-control" id="Latitude" value=""> 
+                     
+                    <label  for="longitude">        &#160;&#160;</label>
+                  &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;  
+                  <span class="error"> <?php echo $longitudeError ?></span>
+                    <input type="hidden" name="longitude" class="form-control" id="Longitude" value=""> 
+                </div> <!-- end   -->
                 <div id="formap"  >
                     <div id="map" >
                         
@@ -537,12 +544,9 @@ $password_confirmError="";
 
                 </div>
                 
-                  
-
-
                 <div class="form-group">
                     <label class="col-md-4 control-label"> </label>  
-                    <div class="col-md-4 inputGroupContainer"> 
+                    <div class="col-md-4 inputGroupContainer" id="sform" > 
 
                 <input type="button" id="pre_btn2" value="Previous" onclick="prev_step2()" >
                  <input type="hidden" name="token" value="<?php echo Token::generate()?>" >
