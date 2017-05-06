@@ -85,14 +85,41 @@ if (!$user->count()){
       <h3>Menu 2</h3>
      
       <style>
- #maplocation {
+
+ #maplocation  {
    width: 100%;
    height: 400px;
    
  }
+ 
+  #floating-panel {
+        position: absolute;
+        top: 119%;
+        left: 72%;
+        z-index: 5;
+        background-color: #fff;
+        padding: 5px;
+        border: 1px solid #999;
+        text-align: center;
+        font-family: "Roboto","sans-serif";
+        line-height: 30px;
+        padding-left: 10px;
+      } 
+ 
 </style>
-<button onclick="initialize()">show on map?</button>
+<h4> <button onclick="initialize()">show on map?</button> <button id="getdirection" onclick="getDirectionsLocation()" >get Direction</button> </h4>
+<div id="floating-panel">
+    <b>Mode of Travel: </b>
+    <select id="mode">
+      <option value="DRIVING">Driving</option>
+      <option value="WALKING">Walking</option>
+      <option value="BICYCLING">Bicycling</option>
+      <option value="TRANSIT">Transit</option>
+    </select>
+    </div>
 <div id="maplocation"></div>
+
+
       <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
     </div>
     
@@ -109,10 +136,10 @@ if (!$user->count()){
 
 <script>
     function initialize() {
-    var myLatlng = new google.maps.LatLng(<?php echo $lat; ?>,<?php echo $long; ?>);
+    var orgLatlng = new google.maps.LatLng(<?php echo $lat; ?>,<?php echo $long; ?>);
     var myOptions = {
       zoom: 14,
-      center: myLatlng,
+      center: orgLatlng,
       mapTypeId: google.maps.MapTypeId.HYBRID
     }
     var map = new google.maps.Map(document.getElementById("maplocation"), myOptions);
@@ -122,7 +149,7 @@ if (!$user->count()){
         map: map,
         draggable: true,
         animation: google.maps.Animation.BOUNCE,
-        position: myLatlng, 
+        position: orgLatlng, 
         title:"<?php echo $orgname; ?>"
        
     });  
@@ -141,5 +168,73 @@ if (!$user->count()){
     map.setZoom(16);
     map.setCenter(marker.getPosition());
   });
-  }
+  } 
+//display diraction from curant location
+
+//directionsPage
+   var oLatlng = new google.maps.LatLng(<?php echo $lat; ?>,<?php echo $long; ?>); 
+   var directionsService = new google.maps.DirectionsService;
+   var z = document.getElementById("maolocation");    
+    
+    function getDirectionsLocation() {
+	console.log("getDirectionsLocation");
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showDirectionsPosition);
+    } else {
+        z.innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
+function showDirectionsPosition(position) {
+	console.log("showDirectionsPosition");
+    directionsLatitude = position.coords.latitude;
+    directionsLongitude = position.coords.longitude;
+    directionsLatLng = new google.maps.LatLng(directionsLatitude,directionsLongitude);
+    getDirections();
+} 
+    
+    function getDirections() {
+        console.log("getDirections");
+        var directionsDisplay = new google.maps.DirectionsRenderer;
+        
+        
+        //console.log('getDirections');
+       // var orgLatlng = new google.maps.LatLng(37.7699298, -122.4469157);
+        
+        var myOptions2 = {
+      zoom: 14,
+      center: oLatlng,
+      mapTypeId: google.maps.MapTypeId.HYBRID
+    }
+        
+        var map2 = new google.maps.Map(document.getElementById('maplocation'),myOptions2 );
+        directionsDisplay.setMap(map2);
+        
+        calculateAndDisplayRoute(directionsService, directionsDisplay);
+        document.getElementById('mode').addEventListener('change', function() {
+          calculateAndDisplayRoute(directionsService, directionsDisplay);
+        });
+        
+    }
+      function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+        var selectedMode = document.getElementById('mode').value;
+ var start = directionsLatLng;
+ var end = oLatlng;
+  var request = {
+    origin:start,
+    destination:end,
+    travelMode: google.maps.TravelMode[selectedMode]
+  };
+          
+          
+        directionsService.route(request, function(response, status) {
+          if (status == 'OK') {
+            directionsDisplay.setDirections(response);
+          } else {
+            window.alert('Directions request failed due to ' + status);
+          }
+        });
+      }
+    
+    //}
     </script>
+    

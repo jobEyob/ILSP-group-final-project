@@ -127,7 +127,7 @@ $pages = ceil($total_row / $item_per_page);
  }).on("page", function(e, num){
   e.preventDefault();
    
-  $("#result").prepend('<div class="loading-indication"><img src="ajax-loader.gif" /> Loading...</div>');
+  $("#result").prepend('<div class="loading-indication"><img src="/ILSP-group-final-project/image/ajax-loader.gif"> Loading...</div>');
   $("#result").load("/ILSP-group-final-project/pages/search-results.php", {'page':num});
     
    /* var page = num;
@@ -183,11 +183,29 @@ $pages = ceil($total_row / $item_per_page);
         $('#txt-category').val(cat);
     });
 }); */
-                  
+    
+    $(document).ready(function(){
+
+        $('input[type="checkbox"]').click(function(){
+
+            if($(this).prop("checked") == true){
+
+                alert("Checkbox is checked.");
+
+            }
+
+            else if($(this).prop("checked") == false){
+
+                //alert("Checkbox is unchecked.");
+
+            }
+
+        });
+
+    });
+             
          
-                
-                
-                
+         
  </script> 
            <style>  
      
@@ -206,7 +224,12 @@ $pages = ceil($total_row / $item_per_page);
     #orgname {
         border-radius: 0 4px 4px 0;
     }            
-                          
+    #nearto{
+         margin-left: 20px;          
+     }
+   
+               
+               
            </style>  
 </div> 
  <div class="jumbotron">
@@ -225,10 +248,16 @@ $pages = ceil($total_row / $item_per_page);
         <span class="input-group-btn">
         <button class="btn btn-default" type="button">Where?</button>
       </span>
-      <input type="text" name="location" id="location" class="form-control" aria-label="...">
-     
+      <input type="text" name="location" id="location" class="form-control" aria-label="..." placeholder="Where?"  autocomplete="off">
+      
     </div><!-- /input-group -->
-     
+   <div id="nearto">
+   <label  for="test">Near to Me</label>
+<label class="myCheckbox" >
+    <input type="checkbox" name="test" id="myCheckbox" >
+    <span></span>
+</label>
+      </div>
   </div><!-- /.col-lg-6 --> 
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;           
   <div class="col-md-5">
@@ -243,10 +272,11 @@ $pages = ceil($total_row / $item_per_page);
           <li role="separator" class="divider"></li>
           <li><a href="#">Separated link</a></li>
         </ul>
-      </div><!-- /btn-group -->
+      </div><!-- /btn-group 
+      -->
       <input type="hidden" id="txt-category"><!-- /this is for test -->
-      
-      <input type="text" name="orgname" id="orgname" class="form-control"  aria-label="...">
+     
+      <input type="text" name="orgname" id="orgname" class="form-control"  aria-label="..." placeholder="search By Name or keyword">
       
       <div class="input-group-btn">
        <span class="input-group-btn">
@@ -258,7 +288,7 @@ $pages = ceil($total_row / $item_per_page);
       
       
     </div><!-- /input-group -->
-    
+     
   </div><!-- /.col-lg-6 -->
     
   <div class="col-md-1">

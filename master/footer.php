@@ -27,5 +27,9 @@
     </footer> 
    
 </div>
+
+<script type="text/javascript"
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFeO0plq2ej2d-aSIyMx_tTgXz5YYstnU&callback=initMap">
+    </script>
 </body>
 </html>

@@ -19,7 +19,7 @@ body {
       color: #fff;
       padding: 35px 20px 35px 25px;
       font-family: Montserrat, sans-serif;
-      margin-top: 80px; 
+      margin-top: 40px; 
      background-size: cover;
      overflow: hidden;
   }
@@ -40,17 +40,18 @@ body {
   }
   #navbar {
       margin-bottom: 0;
-      background-color: #000d1a;
+      background-color: #e0ebeb;
       z-index: 9999;
       border: 0;
+      min-height: 40px;
       font-size: 12px !important;
       line-height: 1.42857143 !important;
       letter-spacing: 4px;
       border-radius: 0;
-    /*  font-family: Montserrat, sans-serif;
+      font-family: Montserrat, sans-serif;
      -webkit-box-shadow: 0 8px 6px -6px #999;
      -moz-box-shadow: 0 8px 6px -6px #999;
-     box-shadow: 0 10px 8px -6px #000000; */
+     box-shadow: 0 12px 10px -8px #334d4d; 
      
   }
   .navbar li a, .navbar .navbar-brand {

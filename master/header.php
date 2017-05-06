@@ -14,8 +14,8 @@ $title = "ILSP-final project";
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="/ILSP-group-final-project/lib/css/bootstrap.min.css">
         <link rel="stylesheet" href="/ILSP-group-final-project/lib/css/bootstrap-theme.min.css">
-        <link rel="stylesheet" href="/ILPS-group-final-project/lib/css/font-awesome.min.css" > 
-        <link rel="stylesheet" href="/ILPS-group-final-project/lib/css/font-awesome.css" > 
+        <link rel="stylesheet" https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css > 
+                                     
         <link rel="stylesheet" href="/ILSP-group-final-project/css/custom-css.css">
         <link rel="stylesheet" href="/ILSP-group-final-project/css/slider.css">
         <script src="/ILSP-group-final-project/lib/js/jquery.min.js"></script>
@@ -27,9 +27,7 @@ $title = "ILSP-final project";
         <script src="/ILSP-group-final-project/lib/js/jquery-ui.js"></script>
         <script src="/ILSP-group-final-project/lib/js/jquery-ui-timepicker-addon.js"></script>
         <script src="/ILSP-group-final-project/lib/js/jquery.bootpag.min.js"></script> 
-         <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCBfNj154XXsUT8pOYTI26rg5UhpI5DWDo&callback=initMap">
-    </script>
+         
                                                       
     </head>
     <!--head section end her --->
@@ -135,7 +133,7 @@ $title = "ILSP-final project";
 <header >
 
             <!--this for navigation -->
-            <nav class="navbar navbar-default navbar-fixed-top" id="navbar" >
+            <nav class="navbar  navbar-fixed-top" id="navbar" >
                 <div class="container-fluid">
                     <div class="navbar-header">
 
@@ -206,31 +204,6 @@ $title = "ILSP-final project";
   }
         ?>
         
-        <!--this div for search 
-        <div id="forsearch">
-            <div class="jumbotron" text-center >
-                <div class="container text-center">
-                    <br>
-                    <p>search organization by category or name</p>
-                    <nav class="navbar navbar-light bg-faded">
-                        <form class="form-inline">
-
-                            <div class="form-group" >
-
-                                <label for="search">What you want?:</label>
-                                <input id="search" class="form-control mr-sm-2" type="text" placeholder="Search organization"/>
-
-                                <label for="location"> &nbsp; Where?:</label>
-                                <input id="location" class="form-control mr-sm-2" type="text" placeholder="location"/>
-                            </div>
-                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
-                                <span class="glyphicon glyphicon-search"></span> Search
-                            </button>
-                        </form>
-                    </nav>
-                </div>
-            </div>
-        </div>
-   -->
+        
         
  
