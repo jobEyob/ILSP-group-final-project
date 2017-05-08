@@ -9,7 +9,7 @@ class DB {
             $_results,
             $_count = 0
             ;
-    public $_and='', $position='', $item_per_page='';
+    public  $_and='', $position='', $item_per_page='';
 
 
 
@@ -44,7 +44,7 @@ class DB {
                     $this->_query->bindValue($x, $param);
 
                     $x++;
-                   // print_r($this->_query);
+                    print_r($this->_query);
                 }
             }
             
@@ -140,7 +140,7 @@ WHERE `category`= '$filde' ";
        }
        return false;
    }
-   public function andtotalget($filde,$_and){
+/*   public function andtotalget($filde,$_and){
        //$sql="SELECT {$filde} FROM {$table}";
        $sql="SELECT `organizetions`.`*`, `address`.`*`,`locations`.`*`,`services`.`*`
 FROM `organizetions`
@@ -172,9 +172,37 @@ WHERE `category`= '$filde' ";
        }
        return false;
    } */
-   
-   
-   public function results(){
+ public function neartogat($category,$lat,$lng,$position,$item_per_page){
+     $sql="SELECT `organizetions`.`*`, `address`.`*`,`locations`.`*`,`services`.`*`,( 
+6371 * acos(
+ cos( radians($lat) ) 
+ * cos( radians( latitude ) ) 
+ * cos( radians( longitude ) - radians($lng) )
+ + sin( radians($lat) )
+ * sin( radians( latitude ) )
+ )
+) AS distance 
+FROM `organizetions`
+INNER JOIN `address` ON 
+`organizetions`.`id`=
+`address`.`org_id`
+INNER JOIN `locations` ON
+`organizetions`.`id`=
+`locations`.`org_id`
+INNER JOIN `services` ON
+`organizetions`.`id`=
+`services`.`org_id`
+WHERE `category` ='$category'
+HAVING distance < 10000 
+ORDER BY distance LIMIT $position , $item_per_page";
+     
+     if($this->query($sql)){
+           return true;
+       }
+       return false;
+ }
+
+  public function results(){
        return $this->_results;
    }
    public function first(){

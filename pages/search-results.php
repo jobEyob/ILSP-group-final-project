@@ -10,9 +10,13 @@ $user= DB::getInstance();
 if(isset($_POST["cate_val"])){
 $category_val= Input::get('cate_val');
 $location_val= Input::get('loca_val');
+$lat_val=Input::get("lat_val");
+$lng_val=Input::get("lng_val");
 } else {
    $category_val=Session::get('category_val'); 
    $location_val=Session::get('location_val'); 
+   $lat_val= Session::get('lat_val');
+   $lng_val= Session::get('lng_val');
 }
 
 
@@ -114,6 +118,7 @@ echo $pages;
 
 //sanitize post value
 $page=Input::get("page");
+
 //$category_val=Session::get('category_val');
 //echo 'p:',$page.'<br>',$category_val;
 
@@ -126,11 +131,17 @@ if(isset($_POST["page"])){
 
 //get current starting point of records
 $position = (($page_number-1) * $item_per_page);
-    
-$user->andget($category_val,$location_val,$position, $item_per_page);
+
+    if($lat_val =="undefined" || $lng_val =="undefined" ){
+       $user->andget($category_val,$location_val,$position, $item_per_page);
+    }else{
+       $user->neartogat($category_val,$lat_val,$lng_val,$position, $item_per_page);
+    }
+
 if (!$user->count()){
     //Redirect::to("../index.php");
     echo 'Data Not Found';
+    
       } else {
     $datas=$user->results();
     
@@ -138,6 +149,7 @@ if (!$user->count()){
      <div class="container">       
     <hgroup class="mb20">
 		<h1>Search Results</h1>
+                
 		<h2 class="lead"><strong class="text-danger"><?php echo count($datas); ?></strong> results were found for the search for <strong class="text-danger"><?php echo $category_val ?></strong></h2>								
 	</hgroup>
          
