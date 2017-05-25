@@ -14,7 +14,7 @@ $title = "ILSP-final project";
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="/ILSP-group-final-project/lib/css/bootstrap.min.css">
         <link rel="stylesheet" href="/ILSP-group-final-project/lib/css/bootstrap-theme.min.css">
-        <link rel="stylesheet" https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css > 
+         
                                      
         <link rel="stylesheet" href="/ILSP-group-final-project/css/custom-css.css">
         <link rel="stylesheet" href="/ILSP-group-final-project/css/slider.css">
@@ -40,6 +40,7 @@ $title = "ILSP-final project";
   if($user->isLoggedIn()){
    ?>
       <header >
+          
 
          <!--this for navigation -->
             <nav class="navbar navbar-default navbar-fixed-top" id="navbar" >
@@ -54,6 +55,7 @@ $title = "ILSP-final project";
 
                         </button>
                         <a class="navbar-brand" href="#myPage">Logo</a>
+                        
                     </div>
       <div class="collapse navbar-collapse" id="myNavbar">
            <ul class="nav navbar-nav">
@@ -66,7 +68,7 @@ $title = "ILSP-final project";
                     </a>
                     <ul class="dropdown-menu">
                         <li><a href="/ILSP-group-final-project/Acount/serviceform.php" >Add service</a></li>
-                        <li><a href="#">updated service</a></li>
+                        <li><a href="/ILSP-group-final-project/Acount/updateService.php">updated service</a></li>
                     </ul>
                      
                  </li> 
@@ -125,7 +127,14 @@ $title = "ILSP-final project";
                 
 </nav>
         </header>
-  <?php  
+  <?php
+       //$us = new User();
+   if($user->hasPermission('admin')){
+ 
+     //echo '<p>you have administerater</p>';
+      // Redirect::to('/ILSP-group-final-project/Admin/index.php');
+   }       
+    
   }else {
  
   ?>
@@ -133,7 +142,7 @@ $title = "ILSP-final project";
 <header >
 
             <!--this for navigation -->
-            <nav class="navbar  navbar-fixed-top" id="navbar" >
+            <nav class="navbar navbar-default navbar-fixed-top" id="navbar" >
                 <div class="container-fluid">
                     <div class="navbar-header">
 
@@ -163,16 +172,17 @@ $title = "ILSP-final project";
                             <li><a href="/ILSP-group-final-project/pages/request_for_reg.php"><span class="glyphicon glyphicon-registration-mark"></span> Registration</a></li>
                             <li id="ul"><a id="a_login" href="/ILSP-group-final-project/pages/login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
                             <!-- data-toggle="modal" data-target="#myModal"  -->   
-                        </ul> 
+                        </ul>
+                       
+                        
                     </div>
-                </div>
                 
-             <!--this for category list navbar-->
+             <!--this for category list navbar--
         <nav id="nav_category" class="navbar" navbar-default style="display: none">
             <div class="container-fluid">
                 <span style="float:right" onclick="ilps_close_nav()" class="glyphicon glyphicon-remove"></span><br>
                 <ul class="nav navbar-nav" id="category_list">
-                   <?php 
+                   <?php /*
                        $user=DB::getInstance();
 
         $user->getAll('category_name','services_category');
@@ -188,13 +198,14 @@ $title = "ILSP-final project";
               echo '<li  ><a href="#">'. $x_value->category_name .'</a></li>';
             
          }                 
-      } ?> 
+      } */?> 
                 </ul>
                
             </div>
-        </nav>   
-                
-                        
+        </nav>     -->
+            
+             
+              </div>
             </nav>
         </header>
         

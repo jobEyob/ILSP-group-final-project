@@ -1,7 +1,8 @@
-<?php
+-<?php
 include $_SERVER['DOCUMENT_ROOT'] . '/ILSP-group-final-project/master/header.php';
 ?>
 
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/ILSP-group-final-project/pages/slide.php'; ?>
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/ILSP-group-final-project/pages/element/search.php'; ?>
 
 <div >
@@ -128,6 +129,7 @@ $autopaperError="";
 </div>
 
 <div >
+    <br/>
     <div class="container">
         <h3>step 1</h3>
         <div class="panel panel-primary">

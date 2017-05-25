@@ -1,6 +1,7 @@
  <?php
 include $_SERVER['DOCUMENT_ROOT'] . '/ILSP-group-final-project/master/header.php'; ?>
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/ILSP-group-final-project/pages/element/search.php'; ?>
+
+<br><br><br><br><br><br><br><br>
 
 <?php
 $nameError ="";
@@ -97,7 +98,8 @@ $password_confirmError="";
     
 
 
-<div>
+<div >
+    
     <div class="container">
 
         <div class="panel panel-primary">    

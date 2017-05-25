@@ -25,19 +25,33 @@ $lng_val=Input::get("lng_val");
  <style>
         @import "http://fonts.googleapis.com/css?family=Roboto:300,400,500,700";
 
-.container { margin-top: 20px; }
+#SearchResults { margin-top: 20px; }
 .mb20 { margin-bottom: 20px; } 
 
 hgroup { padding-left: 15px; border-bottom: 1px solid #ccc; }
 hgroup h1 { font: 500 normal 1.625em "Roboto",Arial,Verdana,sans-serif; color: #2a3644; margin-top: 0; line-height: 1.15; }
 hgroup h2.lead { font: normal normal 1.125em "Roboto",Arial,Verdana,sans-serif; color: #2a3644; margin: 0; padding-bottom: 10px; }
-section{  border: 1px solid #ccc; margin-bottom: 20px; }
-#section:hover{color: aquamarine} 
+section article {  border: 1px solid #ccc; margin-bottom: 20px; margin-left: 0px; margin-right: 0px; }
+#section li:hover {
+  background: #eee;
+  cursor: pointer;
+}
+#section ul {
+  list-style-type: none;
+}
+
+#section li a img {
+  float: left;
+  margin: 0 15px 0 0;
+}
+
+/*#section:hover{color: aquamarine} 
      #section {transition: 1s ease;} 
+    
      #section section:hover{-webkit-transform: scale(1.1);
 -ms-transform: scale(1.1);
 transform: scale(1.1);
-transition: 1s ease;}
+transition: 1s ease;}  */
 
 .search-result .thumbnail { border-radius: 0 !important; }
 .search-result:first-child { margin-top: 0 !important; }
@@ -74,6 +88,7 @@ $(function () {
                                         {
                                            $('#result').html(data);
                                            $("#orgname").val("");
+                                           $('#after').remove();
                                            $("#after_search").fadeOut();
                                             //window.location.href="/ILSP-group-final-project/pages/org-details.php";
                                         },
@@ -146,7 +161,7 @@ if (!$user->count()){
     $datas=$user->results();
     
            ?>
-     <div class="container">       
+<div class="container" id="SearchResults">       
     <hgroup class="mb20">
 		<h1>Search Results</h1>
                 
@@ -162,7 +177,8 @@ if (!$user->count()){
       
     <div id="section">
     <section class="col-xs-12 col-sm-6 col-md-12"> 
-        <h3></h3>
+    <ul>
+       <li>
 		<article class="search-result row">
 			<div class="col-xs-12 col-sm-12 col-md-3">
 				<a href="#" title="Lorem ipsum" class="thumbnail"><img src="http://lorempixel.com/250/140/people" alt="Lorem ipsum" /></a>
@@ -183,9 +199,10 @@ if (!$user->count()){
 			</div>
 			<span class="clearfix borda"></span>
 		</article>
-
-        
+        </li>
+        </ul>
 	</section>
+        
     </div>
     
    ';

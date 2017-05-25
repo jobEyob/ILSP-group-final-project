@@ -1,5 +1,5 @@
 <?php require_once $_SERVER['DOCUMENT_ROOT']. '/ILSP-group-final-project/core/init.php';   ?>
-?>
+
 
 <?php 
 $item_per_page = 1;
@@ -35,7 +35,7 @@ $pages = ceil($total_row / $item_per_page);
  
             <script>  
  $(function() {
-    $( "#orgname" ).autocomplete({
+    $("#orgname").autocomplete({
         
         source: '/ILSP-group-final-project/pages/element/backend-search.php',
         minLength: 1//search after one characters
@@ -43,6 +43,16 @@ $pages = ceil($total_row / $item_per_page);
 
     });
 });
+$(function() {
+    $("#location").autocomplete({
+        
+        source: '/ILSP-group-final-project/pages/element/backend-where.php',
+        minLength: 1//search after one characters
+        
+
+    });
+});
+                
  $(document).ready(function(){
  
          //alert("Enter some text..");
@@ -63,7 +73,7 @@ $pages = ceil($total_row / $item_per_page);
                                         {
                                            $('#result').html(data);
                          $("#orgname").val("");
-
+                         $('#after').remove();
                          $("#after_search").fadeOut();
                          //window.location.href="/ILSP-group-final-project/pages/org-details.php";
                      },
@@ -162,9 +172,13 @@ $pages = ceil($total_row / $item_per_page);
                               {
                                   //alert(cate_val);
                                   //alert(loca_val);
+                                  $('#after').remove();
+                                  $("#after_search").fadeOut();
+                                  $("#result").prepend('<div class="loading-indication"><img src="/ILSP-group-final-project/image/ajax-loader.gif"> Loading...</div>');
                                   $('#result').html(data);
                                   // $("#orgname").val("");
-                                  $("#after_search").fadeOut();
+                                  
+                                  
                                   //window.location.href="/ILSP-group-final-project/pages/org-details.php";
 
                                   $(document).ready(function () {
@@ -250,24 +264,55 @@ $pages = ceil($total_row / $item_per_page);
                    border-radius: 0 4px 4px 0;
                }            
                #nearto{
-                   margin-left: 20px;          
+                   margin-left: 20px; 
+                   color:#EEE;
                }
-   
-               
+         .search {
+         
+            }
+    
+.search .form-section{
+       
+	background:rgba(0,0,0,0.6);
+	border: 2px solid #414141;
+	border-radius: 10px;
+	padding: 30px;
+        
+}
+.serchtile{
+    color:#EEE;
+}
+.serchtile p{
+   font-family: verdana;
+    font-size: 20px; 
+        
+}
+            
                
            </style>  
 </div> 
-<div class="jumbotron">
+<div class="search">
 
-    <br /><br />  
-    <p>search organization by category or name</p>
+    
     <div class="container"  >  
-
         <div class="row">
-            <div class="col-md-2" >
+            <br /><br />  <br />
+        <div class="col-md-10 col-md-offset-1">    
+        <div class="form-section">
+            
+            
+            
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+              <div class="serchtile">  <p>search organization by category or name</p> </div>  
+            </div>
+            <div class="col-md-2"></div>
+        </div>      
+            <div class="col-md-1" >
             </div>                 
 
-            <div class="col-md-4">
+            <div class="col-md-5">
 
                 <div class="input-group">
                     <span class="input-group-btn">
@@ -320,8 +365,42 @@ $pages = ceil($total_row / $item_per_page);
 
             </div>
 
-        </div><!-- /.row -->  
+        </div>
+        </div>
+        </div><!-- /.row --> 
+        </div>
+    
         <div id="geoLocation"></div>       
+        </div>
+        
+   
 
-    </div>  
-</div>
+
+<!--this for category list navbar-->
+      <nav>
+            <div class="container" id="nav_category"  style="display: block" >
+               <!-- <span style="float:right" onclick="ilps_close_nav()" class="glyphicon glyphicon-remove"></span> -->
+                <ul  id="category_list">
+                   <?php 
+                       $user=DB::getInstance();
+
+        $user->getAll('category_name','services_category');
+      
+      if ($user->count()){
+          $val=$user->results();
+       
+          asort($val);
+         foreach ($val as $x_value) {
+            $category= $x_value->category_name;   
+            
+           // echo '<li><a href="/ILSP-group-final-project/pages/search-results.php?name='. $x_value->category_name .'">'. $x_value->category_name .'</a></li>';
+              echo '<li  ><a href="#">'. $x_value->category_name .'</a></li>';
+            
+         }                 
+      } ?> 
+                </ul>
+               
+            </div>
+      </nav>
+
+

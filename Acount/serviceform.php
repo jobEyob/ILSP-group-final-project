@@ -369,7 +369,7 @@ $open_timeError="";$close_timeError="";$s_yearError="";$s_decError="";$latitudeE
                     <div class="col-md-4 inputGroupContainer">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
-                            <input name="website" placeholder="Website or domain name" class="form-control" type="text" 
+                            <input name="website" placeholder="Website or domain name" class="form-control" type="url" 
                                  value="<?php echo escape(Input::get('website')); ?>"   >
                         </div>
                     </div>

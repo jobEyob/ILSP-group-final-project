@@ -1,83 +1,34 @@
 <?php
-include $_SERVER['DOCUMENT_ROOT'] . '/ILSP-group-final-project/master/header.php';
-
-
+include $_SERVER['DOCUMENT_ROOT'] . '/ILSP-group-final-project/master/header.php'; ?>
+<div class="jumbotron" id="ac"  >
+<?php
 $user =new User();
 if(!$user->isLoggedIn()){
     Redirect::to(' ../pages/login.php');
+} else {
+    if ($user->hasPermission('admin')) {
+        
+        if (!$username = Input::get('user')) {
+            Redirect::to('../index.php');
+        } else {
+            $user = new User($username);
+            if (!$user->exists()) {
+                Redirect::to(404);
+            } else {
+                $data = $user->data();
+            }
+        }
+    }
 }
-
 ?>
 
-
-<style>
-    .navbar-login
-{
-    width: 305px;
-    padding: 10px;
-    padding-bottom: 0px;
-}
-
-.navbar-login-session
-{
-    padding: 10px;
-    padding-bottom: 0px;
-    padding-top: 0px;
-}
-
-.icon-size
-{
-    font-size: 87px;
-}
-   /*
-   ..........................................
-   The for notefecation 
-   ............................................
-   */
-   a.fa-globe {
-  position: relative;
-  font-size: 2em;
-  color: grey;
-  cursor: pointer;
-}
-span.fa-comment {
-  position: absolute;
-  font-size: 0.6em;
-  top: -4px;
-  color: red;
-  right: -4px;
-}
-span.num {
-  position: absolute;
-  font-size: 0.3em;
-  top: 1px;
-  color: #fff;
-  right: 2px;
-}
-
-#ac
-{
-   padding-top: 80px;
-    padding-bottom: 5px;
-}
-
-
-#ac h2
-{
-     
-     
-}
-
-
-    
-</style>
-    
- 
- 
 <!--organazetional info--> 
-<div class="jumbotron" id="ac" text-center >
+
+       
     <form class="form-inline">
-           <?php  $user->multiplyfinde('organizetions','user_id');
+           <?php $org_name='';
+           
+           $user->multiplyfinde('organizetions','user_id');
           // echo $user->multiplydata()->logo_path; 
             $exist=$user->multiplydata(); //to chack recored exist about organazation
            if($exist == ''){
@@ -85,9 +36,11 @@ span.num {
            }else{
              $logo=$user->multiplydata()->logo_path;
              $org_name=$user->multiplydata()->org_name;
+               
            
            ?>
-        <label> <?php echo '<img  src="'.$logo.'"  alt="logo" width="160" height="160"  >' ?></label>
+        
+        <label> <?php echo '<img  src="/ILSP-group-final-project/'.$logo.'"  alt="logo" width="160" height="160"  >' ?></label>
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             <label><h2 > organization name:<?php echo escape($org_name);  ?> </h2> </label>
            <?php } ?>
@@ -100,7 +53,16 @@ span.num {
      }  ?>  
     
 </div> 
-
+<?php 
+$db= DB::getInstance();
+if(!$org_name == ""){
+$db->joinget($org_name);
+//print_r($db->results());
+$datas=$db->results();
+foreach ($datas as $value) {
+    
+}
+?>
 
 <div class="container" id="acount_index">
 <ul class="nav nav-tabs">
@@ -110,24 +72,36 @@ span.num {
     
   </ul>
 
-  <div class="tab-content">
+    <div class="tab-content" id="org_profile">
     <div id="home" class="tab-pane fade in active">
-      <h3>HOME</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      <p>Phone Number:<?php echo escape($value->phone_number);  ?>
+      <p>Tell Phone:<?php echo escape($value->tell_phone);  ?>
+      <p>Po_Box:<?php echo escape($value->po_box);  ?>
+      <p>website :<?php echo escape($value->website);  ?>
+      <p>fax :<?php echo escape($value->fax);  ?>
+      <p>region :<?php echo escape($value->region);  ?>
+      <p>sub city :<?php echo escape($value->sub_city);  ?>
+      <p>description :<?php echo escape($value->org_description);  ?>.
     </div>
     <div id="menu1" class="tab-pane fade">
-      <h3>Menu 1</h3>
-      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+     <p>Service category:<?php echo escape($value->category);  ?>
+     <p>service Time in day:<?php echo escape($value->service_in_day);  ?> 
+     <p>service day in week's:<?php echo escape($value->service_in_week);  ?>
+     <p>service year:<?php echo escape($value->service_year).'  year';   ?> 
+     <p>open time:<?php echo escape($value->open_time);  ?> &nbsp; close time:<?php echo escape($value->close_time);  ?>     
+      <p>service description:<?php echo escape($value->service_des);  ?></p>
     </div>
     <div id="menu2" class="tab-pane fade">
-      <h3>Menu 2</h3>
-      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+      <h2><p>organization location</h2>
+      <div id="map">
+          
+      </div>
     </div>
     
       
   </div>
 </div>
-
+<?php }  ?>
 <?php
 include $_SERVER['DOCUMENT_ROOT'] . '/ILSP-group-final-project/master/footer.php';
 ?>

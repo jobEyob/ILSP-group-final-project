@@ -9,7 +9,7 @@ class User {
             $_multipldata,
             $_searchdata;
             
-    function __construct($user=null) {
+    function __construct($user = null) {
         $this->_db= DB::getInstance();
         $this->_sessionName= Config::get('session/session_name');
         $this->_CookieName= Config::get('remember/cookie_name');
@@ -34,7 +34,7 @@ class User {
         if(!$id && $this->isLoggedIn()){
             $id= $this->data()->id;
         }
-        if (!$this->_db->update($tabel, $id, $fields)){
+        if (!$this->_db->update($tabel,'id', $id, $fields)){
             throw new Exception("there problem in updating.");
         }
     }
@@ -94,9 +94,20 @@ class User {
         }
         return false;
     }
+    public function hasPermission($key){
+        $group= $this->_db->get('groups', array('id', '=', $this->data()->groups));
+       // print_r($group->first());
+        if($group->count()){
+          $parmisstion= json_decode( $group->first()->permisstion, true);
+          //print_r($parmisstion);
+          if($parmisstion[$key] == true){
+              return true;
+          }
+          return false;
+        }
+    }
 
-    
-    public function exists(){
+        public function exists(){
         return (!empty($this->_data)? true: false);
     }
 

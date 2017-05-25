@@ -29,8 +29,20 @@ if (!$user->count()){
              // echo $data->org_name;
               $lat=$data->latitude;$long=$data->longitude;
               $orgname=$data->org_name;
+              /*
+               * this for to count how many time organization is visited
+               */
+              $no_ofvisit=$data->no_ofView;
+              $id=$data->org_id;
+              $newVisit=$no_ofvisit+1;
+              $user->update('organizetions','id',$id,array(
+                    
+                   'no_ofView'=> $newVisit
+                  
+                ));
+              //end
           
-   $output .= '      
+   ?>
       
 
 <style>
@@ -39,20 +51,20 @@ if (!$user->count()){
          font-family: "Times New Roman", Times, serif;
          font-weight: bold;
     }
-   #home p{
-        margin-left:-90%;
-    }
+   
 </style>   
 <div id="ac" style="background-color:#f5f5f0;">
     <div class="container" style="margin-bottom: 20px;" >
         <div class="row">
             <div class="col-md-3 col-sm-6 col-xs-12">
-
-            <img  src="'.$data->logo_path.'"  alt="logo" width="160" height="160"  >
+              
+           <?php  $logo=$data->logo_path;  
+           echo '<img  src="/ILSP-group-final-project/'.$logo.'"  alt="logo" width="160" height="160"  >' 
+                   ?>    
 
             </div>
             <div class="col-md-6">
-                <h2>'.$data->org_name.'</h2>
+                <h2><?php echo escape( $data->org_name) ?></h2>
             </div>
             <div class="col-md-3"></div>
         </div>
@@ -66,23 +78,27 @@ if (!$user->count()){
     
   </ul>
 
-  <div class="tab-content">
+  <div class="tab-content" id="org_profile">
     <div id="home" class="tab-pane fade in active">
-        &nbsp;&nbsp;
-        <h4>phone:'.$data->phone_number.'</h4>
-        <h4>tell:'.$data->tell_phone .'</h4>
-        <h4>fax:'.$data->fax .'</h4>
-        <h4>city:'.$data->city .'</h4>
-        <h4>po_box:'.$data->po_box .'</h4> 
-        <h4>About  '.$data->org_name .'</h4>
-        <p> '.$data->org_description .'</p>
+        <p>Phone Number:<?php echo escape($data->phone_number);  ?> </p>
+        <p>Tell Phone:<?php echo escape($data->tell_phone);  ?>  </p>
+      <p>Po_Box:<?php echo escape($data->po_box);  ?>
+      <p>website :<?php echo escape($data->website);  ?>
+      <p>fax :<?php echo escape($data->fax);  ?>
+      <p>region :<?php echo escape($data->region);  ?>
+      <p>sub city :<?php echo escape($data->sub_city);  ?>
+      <p>description :<?php echo escape($data->org_description);  ?>.
     </div>
     <div id="menu1" class="tab-pane fade">
-      <h3>Menu 1</h3>
-      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+     <p>Service category:<?php echo escape($data->category);  ?>
+     <p>service Time in day:<?php echo escape($data->service_in_day);  ?> 
+     <p>service day in week's:<?php echo escape($data->service_in_week);  ?>
+     <p>service year:<?php echo escape($data->service_year).'  year';   ?> 
+     <p>open time:<?php echo escape($data->open_time);  ?> &nbsp; close time:<?php echo escape($data->close_time);  ?>     
+      <p>service description:<?php echo escape($data->service_des);  ?></p>
     </div>
     <div id="menu2" class="tab-pane fade">
-      <h3>Menu 2</h3>
+     
      
       <style>
 
@@ -94,7 +110,7 @@ if (!$user->count()){
  
   #floating-panel {
         position: absolute;
-        top: 119%;
+        top: 124%;
         left: 72%;
         z-index: 5;
         background-color: #fff;
@@ -119,17 +135,15 @@ if (!$user->count()){
     </div>
 <div id="maplocation"></div>
 
-
-      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
     </div>
     
       
   </div>
 </div> 
 </div>
-';
+<?php
           }
-      echo $output;
+     // echo $output;
       }
       ?>
 

@@ -44,7 +44,7 @@ class DB {
                     $this->_query->bindValue($x, $param);
 
                     $x++;
-                    print_r($this->_query);
+                   // print_r($this->_query);
                 }
             }
             
@@ -201,8 +201,27 @@ ORDER BY distance LIMIT $position , $item_per_page";
        }
        return false;
  }
+ public function mostvisitgat(){
+     $sql="SELECT `organizetions`.`*`, `address`.`*`,`locations`.`*`,`services`.`*`
+FROM `organizetions`
+INNER JOIN `address` ON 
+`organizetions`.`id`=
+`address`.`org_id`
+INNER JOIN `locations` ON
+`organizetions`.`id`=
+`locations`.`org_id`
+INNER JOIN `services` ON
+`organizetions`.`id`=
+`services`.`org_id`
+ORDER BY `no_ofView` DESC
+LIMIT 6";
+     if($this->query($sql)){
+         return true;
+     }
+     return false;
+ }
 
-  public function results(){
+ public function results(){
        return $this->_results;
    }
    public function first(){
@@ -239,7 +258,7 @@ ORDER BY distance LIMIT $position , $item_per_page";
        
    }
    
-   public function update($tabel, $id, $fileds=array()){
+   public function update($tabel, $rowname, $id, $fileds=array()){
        $set='';
        $x=1;
        
@@ -253,7 +272,7 @@ ORDER BY distance LIMIT $position , $item_per_page";
       // die($set); username= ?,email= ?
       //$sql = "UPDATE users SET usermane= newusername WHERE id=2";
        
-       $sql = "UPDATE {$tabel} SET {$set} WHERE id={$id}";
+       $sql = "UPDATE {$tabel} SET {$set} WHERE {$rowname}={$id}";
        
     //echo $sql; UPDATE users SET username= ? , email= ? WHERE id=2
        

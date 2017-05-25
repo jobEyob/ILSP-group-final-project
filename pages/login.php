@@ -29,7 +29,14 @@ if($validation->passed()){
      $login=$user->login(Input::get('username'), Input::get('password'), $remember);
      if($login){
         // $path=$_SERVER['DOCUMENT_ROOT'] . '/ILSP-group-final-project/';
+        
+        if($user->hasPermission('admin')){
+
+          //echo '<p>you have administerater</p>';
+            Redirect::to('/ILSP-group-final-project/Admin/index.php');
+        }else{
          Redirect::to('../Acount/index.php');
+        }
      } else {
          echo 'login falde';
      }
