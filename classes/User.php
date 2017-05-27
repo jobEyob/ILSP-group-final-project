@@ -114,8 +114,10 @@ class User {
         //for logout
     public function logout(){
         
-        $this->_db->delete('users_session', array('user_id', "=", $this->data()->id)); // delete from users_session tabel by user id
-        
+        $this->_db->delete('users_session', array('user_id', "=", $this->data()->id)); // delete from users_session tabel by user id             
+        //$date=date("Y-m-d h:i:s");                  
+        //$this->_db->update('users', array( 'last_LogoutTime'=> '2013-05-27 22:00:3' ));
+            
         Session::delete($this->_sessionName);
         Cookie::delete($this->_CookieName); // for chack remember me // user in login time // for delete cookie from user computer
     }

@@ -14,15 +14,10 @@ $title = "ILSP-final project";
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="/ILSP-group-final-project/lib/css/bootstrap.min.css">
         <link rel="stylesheet" href="/ILSP-group-final-project/lib/css/bootstrap-theme.min.css">
-        
-        <link rel="stylesheet" href="/ILSP-group-final-project/assets/css/bootstrap.css" rel="stylesheet"> 
-    <link rel="stylesheet" href="/ILSP-group-final-project/assets/css/animate.css" rel="stylesheet">
-    <link rel="stylesheet" href="/ILSP-group-final-project/assets/css/font-awesome.css" rel="stylesheet">
-        <link rel="stylesheet" href="/ILSP-group-final-project/assets/css/nexus.css" rel="stylesheet">
-        <link rel="stylesheet" href="/ILSP-group-final-project/assets/css/responsive.css" rel="stylesheet">
+         
                                      
         <link rel="stylesheet" href="/ILSP-group-final-project/css/custom-css.css">
-        
+        <link rel="stylesheet" href="/ILSP-group-final-project/css/slider.css">
         <script src="/ILSP-group-final-project/lib/js/jquery.min.js"></script>
         <script src="/ILSP-group-final-project/lib/js/bootstrap.min.js"></script>
         <script src="/ILSP-group-final-project/js/custom-js.js"></script>
@@ -37,7 +32,6 @@ $title = "ILSP-final project";
     </head>
     <!--head section end her --->
     <body id="myPage">
-    <div id="body_bg">
         <?php 
      
      
@@ -45,27 +39,11 @@ $title = "ILSP-final project";
     
   if($user->isLoggedIn()){
    ?>
-    <div id="container_header" class="container">
-                <div id="header" class="row">
-                    <div class="col-md-12 margin-top-40">
-                        <!-- Header Social Icons -->
-                        
-                        <!-- End Header Social Icons -->
-                    </div>
-                    <div class="clear"></div>
-                </div>
-            </div>
-     <div class="primary-container-group">
-    <!-- Background -->
-      <div class="primary-container-background">
-    <div class="primary-container"></div>
-          <div class="clearfix"></div>
-       </div>
-                <!--End Background -->
-     <div class="primary-container">
       <header >
-           <!--this for navigation -->
-            <nav class="navbar navbar-fixed-top" id="navbar" >
+          
+
+         <!--this for navigation -->
+            <nav class="navbar navbar-default navbar-fixed-top" id="navbar" >
                 <div class="container-fluid">
                     <div class="navbar-header">
 
@@ -98,7 +76,10 @@ $title = "ILSP-final project";
                         </ul>
             <ul class="nav navbar-nav navbar-right">
   
-
+<a class="fa fa-globe">
+  <span class="fa fa-comment"></span>
+  <span class="num">2</span>
+</a>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <span class="glyphicon glyphicon-user"></span>
@@ -108,28 +89,37 @@ $title = "ILSP-final project";
                     </a>
                     <ul class="dropdown-menu">
                         <li>
-                            
-                                
+                            <div class="navbar-login">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <p class="text-center">
+                                            <span class="glyphicon glyphicon-user icon-size"></span>
+                                        </p>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <p class="text-left"><strong>eyob zenebe</strong></p>
+                                        <p class="text-left small">eyobzenebe9@gmail.com</p>
+                                        
+                                    </div>
+                                </div>
                              <a href="/ILSP-group-final-project/Acount/index.php" >Profile</a>   
-                           
+                            </div>
                         </li>
-                        
+                        <li class="divider navbar-login-session-bg"></li>
+                        <li role="separator" class="divider"></li>
                        <li><a href="/ILSP-group-final-project/Acount/acountsting.php">
-                        Account Settings </a></li>
-                        
-                         <li><a href="#">notifications </a></li>
-                           
+                        Account Settings <span class="glyphicon glyphicon-cog pull-right"></span></a></li>
+                         <li role="separator" class="divider"></li>
+                         <li class="divider"></li>
+                         <li><a href="#">notifications <span class="glyphicon  pull-right"></span></a></li>
+                         <li role="separator" class="divider"></li>   
            
             
-            
-            <li><a href="/ILSP-group-final-project/pages/logout.php">Sign Out </a></li>
+            <li class="divider"></li>
+            <li><a href="/ILSP-group-final-project/pages/logout.php">Sign Out <span class="glyphicon glyphicon-log-out pull-right"></span></a></li>
                     </ul>
                 </li>
-                
-                <li> &nbsp;&nbsp;&nbsp;&nbsp;</li>
             </ul>
-            
-           
         </div>
     </div>
         
@@ -148,46 +138,16 @@ $title = "ILSP-final project";
   }else {
  
   ?>
-  <div id="container_header" class="container">
-                <div id="header" class="row">
-                    <div class="col-md-12 margin-top-63">
-                        <!-- Header Social Icons -->
-                        <ul class="social-icons circle pull-right">
-                            <li class="social-rss">
-                                <a href="#" target="_blank" title="RSS"></a>
-                            </li>
-                            <li class="social-twitter">
-                                <a href="#" target="_blank" title="Twitter"></a>
-                            </li>
-                            <li class="social-facebook">
-                                <a href="#" target="_blank" title="Facebook"></a>
-                            </li>
-                            <li class="social-googleplus">
-                                <a href="#" target="_blank" title="GooglePlus"></a>
-                            </li>
-                        </ul>
-                        <!-- End Header Social Icons -->
-                    </div>
-                    <div class="clear"></div>
-                </div>
-            </div>
-    <div class="primary-container-group">
-    <!-- Background -->
-      <div class="primary-container-background">
-    <div class="primary-container"></div>
-          <div class="clearfix"></div>
-       </div>
-                <!--End Background -->
-     <div class="primary-container">
-       <header >
+  
+<header >
 
             <!--this for navigation -->
-            <nav class="navbar  navbar-fixed-top" id="navbar" >
-                <div id="container_hornav" class="container-fluid ">
+            <nav class="navbar navbar-default navbar-fixed-top" id="navbar" >
+                <div class="container-fluid">
                     <div class="navbar-header">
 
                         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                            
+
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>

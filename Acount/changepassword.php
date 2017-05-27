@@ -6,14 +6,14 @@ if(!$user->isLoggedIn()){
     Redirect::to(' ../pages/login.php');
 }
 ?>
-<div id="ac"  >
+
 <?php 
 
 
 /******************************
  * for change password
  ******************************/
-
+ $pass_currentError='';$pass_newError='';$pass_confirmError='';
   
 
 if(Input::exists()){
@@ -64,16 +64,25 @@ if(Input::exists()){
                     
             
         } else {
-            foreach ($validation->errors() as $error) {
-              //  echo $error . '<br>';
+            foreach ($validation->errors() as $x=>$x_value) {
+               
+                switch ($x){
+                    case 'password_current':
+                        $pass_currentError=$x_value;
+                        break;
+                    case 'password_new':
+                        $pass_newError=$x_value;
+                        break;
+                    
+                    case 'password_confirm':
+                        $pass_confirmError=$x_value;
+                        break;
+                    default :
+                        break;
+                    
+                }
                 
-                 ?>
-                  <div class="alert alert-danger">
-                      <i class="glyphicon glyphicon-warning-sign"></i> &nbsp; <?php echo $error; ?>
-                  </div>
-                  <?php
-                
-            }//
+            }
         }
     }
 }
@@ -83,43 +92,40 @@ if(Input::exists()){
 ?>
 
 
-</div>
-
-<div class="container-fluid " id="acountsting">
 
 
-    
-    <div class="row">
-        <div class="col-sm-2 col-md-3">    
-            <div class="nav-container" id="Anav-container">
-               <ul class="nav" id="Anav">
-                    <li class="active">
+<div class="container">
+        <!-- === END HEADER === -->
+        <!-- === BEGIN CONTENT === -->
+ <div class="row margin-vert-30">
+            <!-- Begin Sidebar Menu -->
+    <div class="col-md-3">
+         <ul class="list-group sidebar-nav" id="sidebar-nav">
+                    <li class="list-group-item">
                         <a href="/ILSP-group-final-project/Acount/acountsting.php"  >
-                            <span class="icon-home"></span>
-                            <span class="text" >General</span>
+                            
+                            General
                         </a>
                     </li>
-                    <li>
-                        <a href="/ILSP-group-final-project/Acount/changepassword.php" >
-                            <span class="icon-user"></span>
-                            <span class="text">Change password</span>
+                   <li class="list-group-item">
+                        <a href="/ILSP-group-final-project/Acount/changepassword.php">
+                           
+                            Change password
                         </a>
                     </li>
-                    <li>
-                        <a href="#" >
-                            <span class="icon-headphones"></span>
-                            <span class="text">third</span>
+                    <li class="list-group-item">
+                        <a href="#" onclick="third()">
+                            
+                            third
                         </a>
                     </li>
                     
                 </ul> 
-            </div>
-
-        </div>   
-        <div class="col-sm-10 col-md-9">
-
-           
-            
+    </div>
+    <!-- End Sidebar Menu -->
+    
+    <div class="col-md-9">
+      
            
             <!-- field set 2 -->
             <fieldset id="second">
@@ -138,18 +144,21 @@ if(Input::exists()){
 
                             <div class="form-group">
                                 <label class="col-md-3 control-label">Current password:</label>
+                                <span class="error"> <?php echo $pass_currentError;?></span>
                                 <div class="col-md-8">
                                     <input class="form-control" name="password_current" type="password">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-md-3 control-label">New Password:</label>
+                                <span class="error"> <?php echo $pass_newError;?></span>
                                 <div class="col-md-8">
                                     <input class="form-control" name="password_new" type="password">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-md-3 control-label">Confirm password:</label>
+                                <span class="error"> <?php echo $pass_confirmError;?></span>
                                 <div class="col-md-8">
                                     <input class="form-control" name="password_confirm"  type="password">
                                 </div>
@@ -174,9 +183,9 @@ if(Input::exists()){
 
         </div>   
         <!-- above this is content -->
-    </div>
+    
+   </div>
 </div>
-
 <?php
 include $_SERVER['DOCUMENT_ROOT'] . '/ILSP-group-final-project/master/footer.php';
 ?>

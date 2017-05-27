@@ -282,7 +282,7 @@ $fileEror1='';
     </script>
    
 
-<div class="container" style="padding-top: 60px;">
+<div class="container" >
   <h1 class="page-header">Edit Profile</h1>
       
    <?php $update =DB::getInstance();
@@ -460,7 +460,7 @@ $fileEror1='';
                <div class="form-group">
                     <label class="col-md-4 control-label" for="category"  >select category</label>
                     <span class="error"> <?php echo $categoryError ?></span>
-                    <div class="col-md-4 inputGroupContainer">   
+                    <div class="col-md-5 inputGroupContainer">   
 
                         <select  class="form-control" id="category" name="category" >
                         <option selected="selected" ><?php echo escape($data->category); ?></option>
@@ -499,7 +499,7 @@ $fileEror1='';
        <div class="form-group">
                     <label class="col-md-4 control-label">Service time</label> 
                   
-                    <div class="col-md-2 inputGroupContainer">
+                    <div class="col-md-3 inputGroupContainer">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
                             <input id="service_t" name="service_in_day" placeholder="hour in day" class="form-control" type="text"
@@ -508,7 +508,7 @@ $fileEror1='';
                     </div>
                    <div class="col-md-2 inputGroupContainer">
                         <div class="input-group">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                            
                             <input id="service_d" name="service_in_week" placeholder="day in week" class="form-control" type="number" max="7" min="1" 
                             value="<?php echo escape($data->service_in_week); ?>" >
                         </div>
@@ -519,7 +519,7 @@ $fileEror1='';
       <div class="form-group">
                     <label class="col-md-4 control-label">open time</label>
                     <span class="error"> <?php echo $open_timeError ?></span>
-                    <div class="col-md-4 inputGroupContainer">
+                    <div class="col-md-5 inputGroupContainer">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
                             <input id="o_time" name="open_time" placeholder="open time" class="form-control" type="text"
@@ -531,7 +531,7 @@ $fileEror1='';
       <div class="form-group">
                     <label class="col-md-4 control-label">close time</label>  
                     <span class="error"> <?php echo $close_timeError ?></span>
-                    <div class="col-md-4 inputGroupContainer">
+                    <div class="col-md-5 inputGroupContainer">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
                             <input id="c_time" name="close_time" placeholder="close time" class="form-control" type="text"
@@ -542,7 +542,7 @@ $fileEror1='';
        <div class="form-group">
                     <label class="col-md-4 control-label">service year</label> 
                     <span class="error"> <?php echo $s_yearError ?></span>
-                    <div class="col-md-4 inputGroupContainer">
+                    <div class="col-md-5 inputGroupContainer">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
                             <input id="s_year" name="service_year" placeholder="service year" class="form-control" type="text"
@@ -554,7 +554,7 @@ $fileEror1='';
       <div class="form-group">
                     <label class="col-md-4 control-label">service Description</label>
                     <span class="error"> <?php echo $s_decError ?></span>
-                    <div class="col-md-4 inputGroupContainer">
+                    <div class="col-md-5 inputGroupContainer">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
      <textarea class="form-control" name="service_dec" placeholder="service Description"><?php echo escape($data->service_des); ?></textarea>
@@ -564,7 +564,7 @@ $fileEror1='';
                 
                 <div class="form-group">
                     <label class="col-md-4 control-label"> </label>  
-                    <div class="col-md-4 inputGroupContainer" id="sform" >    
+                    <div class="col-md-5 inputGroupContainer" id="sform" >    
                         <input type="button" id="pre_btn1" value="Previous" onclick="prev_step1()"/>
                         <input type="button" name="next" id="next_btn2" value="Next" onclick="next_step2(); initMap();" />
                     </div>

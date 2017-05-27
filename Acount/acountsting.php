@@ -7,12 +7,13 @@ if(!$user->isLoggedIn()){
 }
 
 ?>
-<div id="ac"  >
+
 <?php 
 /*$user =new User();
 if(!$user->isLoggedIn()){
     Redirect::to(' ../pages/login.php');
 } */
+$username_Error='';$email_Error='';
 
 if(Input::exists()){
     if(Token::check(Input::get('token'))){
@@ -53,13 +54,21 @@ if(Input::exists()){
                     
             
         } else {
-            foreach ($validation->errors() as $error) {
-               // echo $error . '<br>';
-                 ?>
-                  <div class="alert alert-danger">
-                      <i class="glyphicon glyphicon-warning-sign"></i> &nbsp; <?php echo $error; ?>
-                  </div>
-                  <?php
+            foreach ($validation->errors() as $x=>$x_value) {
+               
+                switch ($x){
+                    case 'username':
+                        $username_Error=$x_value;
+                        break;
+                    
+                    case 'email':
+                        $email_Error=$x_value;
+                        break;
+                    default :
+                        break;
+                    
+                }
+                
             }
         }
     }
@@ -68,40 +77,36 @@ if(Input::exists()){
 ?>
 
 
-</div>
-
-<div class="container-fluid " id="acountsting">
-
-
-    
-    <div class="row">
-        <div class="col-sm-2 col-md-3">    
-            <div class="nav-container" id="Anav-container">
-                <ul class="nav" id="Anav">
-                    <li class="active">
+<div class="container">
+<div class="row margin-vert-30">
+            <!-- Begin Sidebar Menu -->
+    <div class="col-md-3">
+         <ul class="list-group sidebar-nav" id="sidebar-nav">
+                    <li class="list-group-item">
                         <a href="/ILSP-group-final-project/Acount/acountsting.php"  >
-                            <span class="icon-home"></span>
-                            <span class="text">General</span>
+                            
+                            General
                         </a>
                     </li>
-                    <li>
+                   <li class="list-group-item">
                         <a href="/ILSP-group-final-project/Acount/changepassword.php">
-                            <span class="icon-user"></span>
-                            <span class="text">Change password</span>
+                           
+                            Change password
                         </a>
                     </li>
-                    <li>
+                    <li class="list-group-item">
                         <a href="#" onclick="third()">
-                            <span class="icon-headphones"></span>
-                            <span class="text">third</span>
+                            
+                            third
                         </a>
                     </li>
                     
                 </ul>   
-            </div>
+           
 
-        </div>   
-        <div class="col-sm-10 col-md-9">
+    </div>  
+     <!-- End Sidebar Menu --> 
+    <div class="col-md-9">
 
             <fieldset id="first">
 
@@ -125,6 +130,7 @@ if(Input::exists()){
                             
                             <div class="form-group">
                                 <label class="col-lg-3 control-label">Email:</label>
+                                <span class="error"> <?php echo $email_Error;?></span>
                                 <div class="col-lg-8">
                                     <input class="form-control" name="email" value="<?php echo escape($user->data()->email);  ?>" type="text">
                                 </div>
@@ -132,6 +138,7 @@ if(Input::exists()){
 
                             <div class="form-group">
                                 <label class="col-md-3 control-label">Username:</label>
+                                <span class="error"> <?php echo $username_Error;?></span>
                                 <div class="col-md-8">
                                     <input class="form-control" name="username" value="<?php echo escape($user->data()->username);  ?>" type="text">
                                 </div>

@@ -5,7 +5,7 @@
     Redirect::to(' ../pages/login.php');
 }
  ?>
-<div id="ac">
+<div >
     
 <?php
 $nameError ="";$emailError ="";$regionError="";$phoneError="";$tellError="";$faxError="";$cityError="";
@@ -253,11 +253,14 @@ $open_timeError="";$close_timeError="";$s_yearError="";$s_decError="";$latitudeE
    
 
 <div class="container">
+   <h1 class="page-header">Add Organization information</h1>
     <div  class="main" id="service_main">
         <ul id="progressbar">
-            <li id="active1"><strong>Basic information </strong></li>
-            <li id="active2"><strong>service information</strong> </li>
-            <li id="active3"><strong>map location</strong></li>
+           <div class="row">
+            <div class="col-md-4"> <li id="active1"><strong>Basic information </strong></li> </div>
+            <div class="col-md-4"> <li id="active2"><strong>service information</strong> </li> </div>
+            <div class="col-md-4"> <li id="active3"><strong>map location</strong></li>     </div>
+            </div>
         </ul>
         <form class="form-horizontal" action="" method="post" enctype="multipart/form-data" >
             <fieldset id="first"> 
@@ -272,7 +275,7 @@ $open_timeError="";$close_timeError="";$s_yearError="";$s_decError="";$latitudeE
                 <div class="form-group">
                     <label class="col-md-4 control-label">Organization Name</label> 
                     <span class="error"> <?php echo $nameError;?></span>
-                    <div class="col-md-4 inputGroupContainer">
+                    <div class="col-md-5 inputGroupContainer">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                             <input  name="org_name" placeholder="org Name" class="form-control"  type="text" 
@@ -283,7 +286,7 @@ $open_timeError="";$close_timeError="";$s_yearError="";$s_decError="";$latitudeE
                 
                 <div class="form-group">
                     <label class="col-md-4 control-label">Organization Logo</label>  
-                    <div class="col-md-4 inputGroupContainer">
+                    <div class="col-md-5 inputGroupContainer">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-camera"></i></span>
                      <input  name="org_logo"    type="file" accept="image/*" onchange="preview_image(event)"  >
@@ -296,7 +299,7 @@ $open_timeError="";$close_timeError="";$s_yearError="";$s_decError="";$latitudeE
                 <div class="form-group">
                     <label class="col-md-4 control-label">Region</label> 
                      <span class="error"> <?php echo $regionError;?></span>
-                    <div class="col-md-4 inputGroupContainer">
+                    <div class="col-md-5 inputGroupContainer">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
                             <input name="region" placeholder="region" class="form-control" type="text" 
@@ -308,7 +311,7 @@ $open_timeError="";$close_timeError="";$s_yearError="";$s_decError="";$latitudeE
                 <div class="form-group">
                     <label class="col-md-4 control-label">Phone</label> 
                      <span class="error"> <?php echo $phoneError;?></span>
-                    <div class="col-md-4 inputGroupContainer">
+                    <div class="col-md-5 inputGroupContainer">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
                             <input name="phone" placeholder="(+251).." class="form-control" type="text" 
@@ -320,7 +323,7 @@ $open_timeError="";$close_timeError="";$s_yearError="";$s_decError="";$latitudeE
                 <div class="form-group">
                     <label class="col-md-4 control-label">Tell</label> 
                      <span class="error"> <?php echo $tellError;?></span>
-                    <div class="col-md-4 inputGroupContainer">
+                    <div class="col-md-5 inputGroupContainer">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
                             <input name="tell" placeholder="(011).." class="form-control" type="text" 
@@ -331,7 +334,7 @@ $open_timeError="";$close_timeError="";$s_yearError="";$s_decError="";$latitudeE
                 <div class="form-group">
                     <label class="col-md-4 control-label">fax</label>  
                      <span class="error"> <?php echo $faxError ;?></span>
-                    <div class="col-md-4 inputGroupContainer">
+                    <div class="col-md-5 inputGroupContainer">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
                             <input name="fax" placeholder="(010).." class="form-control" type="text" 
@@ -343,7 +346,7 @@ $open_timeError="";$close_timeError="";$s_yearError="";$s_decError="";$latitudeE
                 <div class="form-group">
                     <label class="col-md-4 control-label">City</label>  
                      <span class="error"> <?php echo $cityError ;?></span>
-                    <div class="col-md-4 inputGroupContainer">
+                    <div class="col-md-5 inputGroupContainer">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
                             <input name="city" placeholder="city" class="form-control"  type="text" 
@@ -354,7 +357,7 @@ $open_timeError="";$close_timeError="";$s_yearError="";$s_decError="";$latitudeE
                 <div class="form-group">
                     <label class="col-md-4 control-label">sub City</label>  
                      <span class="error"> <?php echo $sub_cityError;?></span>
-                    <div class="col-md-4 inputGroupContainer">
+                    <div class="col-md-5 inputGroupContainer">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
                             <input name="sub_city" placeholder="sub city" class="form-control"  type="text" 
@@ -366,7 +369,7 @@ $open_timeError="";$close_timeError="";$s_yearError="";$s_decError="";$latitudeE
                 <div class="form-group">
                     <label class="col-md-4 control-label">website</label>
                      <span class="error"> <?php echo $websiteError;?></span>
-                    <div class="col-md-4 inputGroupContainer">
+                    <div class="col-md-5 inputGroupContainer">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
                             <input name="website" placeholder="Website or domain name" class="form-control" type="url" 
@@ -378,7 +381,7 @@ $open_timeError="";$close_timeError="";$s_yearError="";$s_decError="";$latitudeE
                 <div class="form-group">
                     <label class="col-md-4 control-label">organization Description</label>
                     <span class="error"> <?php echo $org_decError ?></span>
-                    <div class="col-md-4 inputGroupContainer">
+                    <div class="col-md-5 inputGroupContainer">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
                             <textarea class="form-control" name="org_dec" placeholder="organization Description" 
@@ -388,7 +391,7 @@ $open_timeError="";$close_timeError="";$s_yearError="";$s_decError="";$latitudeE
                 </div>
                 <div class="form-group">
                     <label class="col-md-4 control-label"></label>
-                    <div class="col-md-4 inputGroupContainer">
+                    <div class="col-md-5 inputGroupContainer">
                         <div class="input-group" id="sform" >
                             <input type="button" id="next_btn1" value="Next" onclick="next_step1()" />  
                         </div>
@@ -404,7 +407,7 @@ $open_timeError="";$close_timeError="";$s_yearError="";$s_decError="";$latitudeE
                <div class="form-group">
                     <label class="col-md-4 control-label" for="category"  >select category</label>
                     <span class="error"> <?php echo $categoryError ?></span>
-                    <div class="col-md-4 inputGroupContainer">   
+                    <div class="col-md-5 inputGroupContainer">   
 
                         <select  class="form-control" id="category" name="category" >
                             <option>--Select list--</option>
@@ -443,15 +446,15 @@ $open_timeError="";$close_timeError="";$s_yearError="";$s_decError="";$latitudeE
        <div class="form-group">
                     <label class="col-md-4 control-label">Service time</label> 
                   
-                    <div class="col-md-2 inputGroupContainer">
+                    <div class="col-md-3 inputGroupContainer">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
-                            <input id="service_t" name="service_in_day" placeholder="hour in day" class="form-control" type="text">
+                            <input id="service_t" name="service_in_day" placeholder="work hour in day" class="form-control" type="text">
                         </div>
                     </div>
                    <div class="col-md-2 inputGroupContainer">
                         <div class="input-group">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                            
                             <input id="service_d" name="service_in_week" placeholder="day in week" class="form-control" type="number" max="7" min="1" value="" >
                         </div>
                     </div>
@@ -461,7 +464,7 @@ $open_timeError="";$close_timeError="";$s_yearError="";$s_decError="";$latitudeE
       <div class="form-group">
                     <label class="col-md-4 control-label">open time</label>
                     <span class="error"> <?php echo $open_timeError ?></span>
-                    <div class="col-md-4 inputGroupContainer">
+                    <div class="col-md-5 inputGroupContainer">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
                             <input id="o_time" name="open_time" placeholder="open time" class="form-control" type="text">
@@ -472,7 +475,7 @@ $open_timeError="";$close_timeError="";$s_yearError="";$s_decError="";$latitudeE
       <div class="form-group">
                     <label class="col-md-4 control-label">close time</label>  
                     <span class="error"> <?php echo $close_timeError ?></span>
-                    <div class="col-md-4 inputGroupContainer">
+                    <div class="col-md-5 inputGroupContainer">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
                             <input id="c_time" name="close_time" placeholder="close time" class="form-control" type="text">
@@ -482,7 +485,7 @@ $open_timeError="";$close_timeError="";$s_yearError="";$s_decError="";$latitudeE
        <div class="form-group">
                     <label class="col-md-4 control-label">service year</label> 
                     <span class="error"> <?php echo $s_yearError ?></span>
-                    <div class="col-md-4 inputGroupContainer">
+                    <div class="col-md-5 inputGroupContainer">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
                             <input id="s_year" name="service_year" placeholder="service year" class="form-control" type="text">
@@ -493,7 +496,7 @@ $open_timeError="";$close_timeError="";$s_yearError="";$s_decError="";$latitudeE
       <div class="form-group">
                     <label class="col-md-4 control-label">service Description</label>
                     <span class="error"> <?php echo $s_decError ?></span>
-                    <div class="col-md-4 inputGroupContainer">
+                    <div class="col-md-5 inputGroupContainer">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
                             <textarea class="form-control" name="service_dec" placeholder="service Description"></textarea>
@@ -503,7 +506,7 @@ $open_timeError="";$close_timeError="";$s_yearError="";$s_decError="";$latitudeE
                 
                 <div class="form-group">
                     <label class="col-md-4 control-label"> </label>  
-                    <div class="col-md-4 inputGroupContainer" id="sform" >    
+                    <div class="col-md-5 inputGroupContainer" id="sform" >    
                         <input type="button" id="pre_btn1" value="Previous" onclick="prev_step1()"/>
                         <input type="button" name="next" id="next_btn2" value="Next" onclick="next_step2(); initMap();" />
                     </div>
@@ -546,7 +549,7 @@ $open_timeError="";$close_timeError="";$s_yearError="";$s_decError="";$latitudeE
                 
                 <div class="form-group">
                     <label class="col-md-4 control-label"> </label>  
-                    <div class="col-md-4 inputGroupContainer" id="sform" > 
+                    <div class="col-md-5 inputGroupContainer" id="sform" > 
 
                 <input type="button" id="pre_btn2" value="Previous" onclick="prev_step2()" >
                  <input type="hidden" name="token" value="<?php echo Token::generate()?>" >

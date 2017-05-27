@@ -1,6 +1,4 @@
-<?php
-include $_SERVER['DOCUMENT_ROOT'] . '/ILSP-group-final-project/master/header.php';
-?>
+<?php require_once $_SERVER['DOCUMENT_ROOT']. '/ILSP-group-final-project/core/init.php';   ?>
 <script>
    $(document).ready(function(){
        
@@ -20,7 +18,11 @@ $user=DB::getInstance();
 $user->joinget($orgs_name);
 if (!$user->count()){
     //Redirect::to("../index.php");
-    echo 'Data Not Found';
+    echo '<div class="container">
+   <p> Data Not Found </p>
+     <br><br><br><br>
+     <br><br><br><br><br>
+    </div>';
       } else {
           
           //print_r($user->results());
@@ -52,8 +54,14 @@ if (!$user->count()){
          font-weight: bold;
     }
    
-</style>   
-<div id="ac" style="background-color:#f5f5f0;">
+</style> 
+<div class="container">
+                        <!-- === END HEADER === -->
+                        <!-- === BEGIN CONTENT === -->
+            <div class="row margin-vert-30">
+            <div class="col-md-12 margin-top-30">
+    
+<div >
     <div class="container" style="margin-bottom: 20px;" >
         <div class="row">
             <div class="col-md-3 col-sm-6 col-xs-12">
@@ -110,8 +118,7 @@ if (!$user->count()){
  
   #floating-panel {
         position: absolute;
-        top: 124%;
-        left: 72%;
+        
         z-index: 5;
         background-color: #fff;
         padding: 5px;
@@ -140,6 +147,9 @@ if (!$user->count()){
       
   </div>
 </div> 
+</div>
+                </div>
+    </div>
 </div>
 <?php
           }

@@ -7,6 +7,10 @@ include $_SERVER['DOCUMENT_ROOT'] . '/ILSP-group-final-project/master/header.php
     <h1> &nbsp;</h1>
       
 <?php
+$incoract="";   
+$nameError ="";
+$passwordError="";
+    
 if(Token::check(Input::get('token'))){
     if(Input::exists()){
         $validate= new Validate();
@@ -33,18 +37,38 @@ if($validation->passed()){
         if($user->hasPermission('admin')){
 
           //echo '<p>you have administerater</p>';
-            Redirect::to('/ILSP-group-final-project/Admin/index.php');
+            Redirect::to('/ILSP-group-final-project/admin/index.php');
         }else{
+            
+            //$data = $user->data()->username;
+             
+            
          Redirect::to('../Acount/index.php');
+            
         }
      } else {
-         echo 'login falde';
+         //echo 'User Name or password incoract';
+         $incoract='User Name or password incoract';
      }
     
 } else {
-    foreach ($validation->errors() as $error){
-        echo $error , '<br>';
-    }
+    foreach ($validation->errors() as $x=>$x_value) {
+               
+                switch ($x){
+                    case 'username':
+                        $nameError=$x_value;
+                        break;
+                    
+                    case 'password':
+                        $passwordError=$x_value;
+                        break;
+                    
+                    default :
+                        break;
+                    
+                }
+                
+            }
 }
 }
  ?>
@@ -54,7 +78,7 @@ if($validation->passed()){
 
 /****** LOGIN MODAL ******/
 #login{
-    margin-top: 29px;
+    margin-top: -22px;
     
 }
 
@@ -168,6 +192,12 @@ if($validation->passed()){
 
 
 
+<div class="container">
+                        <!-- === END HEADER === -->
+                        <!-- === BEGIN CONTENT === -->
+<div class="container">
+<div class="row margin-vert-30">
+                                <!-- Login Box -->
 
 
 
@@ -177,19 +207,20 @@ if($validation->passed()){
 <div class="modal-dialog" id="login" >
 
     <!-- Modal content-->
-    <div class="loginmodal-container" style="padding-top: 15px;" >
+    <div class="loginmodal-container login-page" style="padding-top: 15px;" >
       <div class="modal-header">
         
         <h1>Login to Your Account</h1><br>
-        
+        <span class="error"> <?php echo $incoract;?></span>
       </div>
-        <form role="form" id="ModalForm" action="" method="post">
+        <form  role="form" id="ModalForm" action="" method="post">
       <div class="modal-body">
           <div class="form-group">
+           <span class="error"> <?php echo $nameError;?></span>
           <input type="text" name="username" class="form-control" placeholder="Username">
         </div>
           <div class="form-group">
-          
+            <span class="error"> <?php echo $passwordError;?></span>
               <input  type="password"name="password" class="form-control" id="pwd" placeholder="password">
         </div>
       </div>
@@ -212,7 +243,10 @@ if($validation->passed()){
         
     </div>
 
-  </div>
+     </div>
+</div>
+</div>  
+    </div>
 
 
 <?php

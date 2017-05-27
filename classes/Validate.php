@@ -41,7 +41,7 @@ class Validate{
                                 if($check->count()){ 
                    //$check call DB class metode count. count check if there seame item exist it addError to error array
                                     
-                                    $this->addError($item,"{$item} Username already taken. Choose another one ");
+                                    $this->addError($item,"{$item}  already taken. Choose another one ");
                                 }
                                 break;
 

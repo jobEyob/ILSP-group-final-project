@@ -1,5 +1,5 @@
 /**
-* @template:  Virtuoso
+
 
 TABLE OF CONTENTS
 
@@ -82,7 +82,7 @@ body {
   padding-right: 15px !important;
 }
 #container_header {
-  height: 120px;
+  height: 116px;
 }
 #container_hornav {
   position: relative;
@@ -383,7 +383,7 @@ h1.logo-text a {
   margin-top: 10px;
 }
 .margin-top-15 {
-  margin-top: 60px;
+  margin-top: 15px;
 }
 .margin-top-20 {
   margin-top: 20px;
@@ -396,6 +396,9 @@ h1.logo-text a {
 }
 .margin-top-60 {
   margin-top: 60px;
+}
+.margin-top-63 {
+  margin-top: 63px;
 }
 .margin-bottom-0 {
   margin-bottom: 0;
@@ -589,30 +592,30 @@ h1.logo-text a {
   position: relative;
   width: 100%;
 }
-#hornav ul > li > a:hover,
-#hornav ul > li.active > a {
-  background-color: #393040;
+.navbar-collapse ul > li > a:hover,
+.navbar-collapse ul > li.active > a {
+  background-color: #806f90;
 }
-#hornav {
+/*#hornav {
   position: relative;
   padding-top: 0px;
   padding-right: 0px;
 }
-#hornav > ul {
+/*#hornav > ul {
   background-color: rgba(0, 0, 0, 0.2);
   border-radius: 0 5px 0 5px;
   padding: 0 10px 0 12px;
   -moz-box-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1) inset;
   -webkit-box-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1) inset;
   box-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1) inset;
-}
-#hornav > ul > li {
+} */
+.navbar-collapse > ul > li {
   margin: 0px 5px;
-  padding: 12px 0;
+  padding: 10px 0;
 }
-#hornav > ul > li > a,
-#hornav > ul > li > span {
-  background-color: #473d4f;
+.navbar-collapse > ul > li > a,
+.navbar-collapse > ul > li > span {
+ /* background-color: #473d4f; */
   color: #dcd7e0;
   display: block;
   font-size: 14px;
@@ -633,12 +636,12 @@ h1.logo-text a {
   -ms-transition-property: background-color;
   transition-property: background-color;
   -moz-box-shadow: 0px 1px 0 rgba(0, 0, 0, 0.1) inset, 1px 0 0 rgba(0, 0, 0, 0.1) inset, 0px 0px 5px rgba(0, 0, 0, 0.1) inset;
-  -webkit-box-shadow: 0px 1px 0 rgba(0, 0, 0, 0.1) inset, 1px 0 0 rgba(0, 0, 0, 0.1) inset, 0px 0px 5px rgba(0, 0, 0, 0.1) inset;
-  box-shadow: 0px 1px 0 rgba(0, 0, 0, 0.1) inset, 1px 0 0 rgba(0, 0, 0, 0.1) inset, 0px 0px 5px rgba(0, 0, 0, 0.1) inset;
-  border-radius: 5px;
+/*  -webkit-box-shadow: 0px 1px 0 rgba(0, 0, 0, 0.1) inset, 1px 0 0 rgba(0, 0, 0, 0.1) inset, 0px 0px 5px rgba(0, 0, 0, 0.1) inset; 
+  box-shadow: 0px 1px 0 rgba(0, 0, 0, 0.1) inset, 1px 0 0 rgba(0, 0, 0, 0.1) inset, 0px 0px 5px rgba(0, 0, 0, 0.1) inset; */
+  border-radius: 5px; 
 }
 /* Dropdown Menu */
-#hornav ul ul {
+.navbar-collapse ul ul {
   background: #F8F8F8;
   border-radius: 5px;
   position: relative;
@@ -654,13 +657,13 @@ h1.logo-text a {
   min-width: 200px;
   z-index: 20;
 }
-#hornav ul ul li {
+.navbar-collapse ul ul li {
   min-height: 22px;
   float: none;
   position: relative;
 }
-#hornav ul ul li a,
-#hornav ul ul li span {
+.navbar-collapse ul ul li a,
+.navbar-collapse ul ul li span {
   background-color: transparent;
   box-shadow: none;
   display: block;
@@ -669,7 +672,7 @@ h1.logo-text a {
   text-transform: none;
   border-top: 1px solid rgba(0, 0, 0, 0.05);
 }
-#hornav ul ul:before {
+.navbar-collapse ul ul:before {
   background: transparent url('../img/menu_arrow.png') no-repeat 0 0;
   content: "";
   display: block;
@@ -679,23 +682,23 @@ h1.logo-text a {
   top: -10px;
   width: 14px;
 }
-#hornav ul ul li:first-child a {
+.navbar-collapse ul ul li:first-child a {
   border: none;
 }
-#hornav ul ul li a:active,
-#hornav ul ul li a:focus,
-#hornav ul ul li a:hover {
+.navbar-collapse ul ul li a:active,
+.navbar-collapse ul ul li a:focus,
+.navbar-collapse ul ul li a:hover {
   text-decoration: none;
   background-color: rgba(0, 0, 0, 0.05);
 }
-#hornav ul ul li:hover a {
+.navbar-collapse ul ul li:hover a {
   text-decoration: none;
 }
-#hornav ul ul ul:before {
+.navbar-collapse ul ul ul:before {
   display: none;
 }
-#hornav li ul,
-#hornav li ul li ul {
+.navbar-collapse li ul,
+.navbar-collapse li ul li ul {
   position: absolute;
   height: auto;
   min-width: 200px;
@@ -709,22 +712,22 @@ h1.logo-text a {
   top: 80px;
   z-index: 1000;
 }
-#hornav li:hover > ul,
-#hornav li ul li:hover > ul {
+.navbar-collapse li:hover > ul,
+.navbar-collapse li ul li:hover > ul {
   display: block;
   opacity: 1;
   visibility: visible;
   top: 60px;
 }
-#hornav li ul li ul {
+.navbar-collapse li ul li ul {
   left: 220px;
   top: 0;
 }
-#hornav li ul li:hover > ul {
+.navbar-collapse li ul li:hover > ul {
   top: 0px;
   left: 200px;
 }
-#hornav ul ul .parent:after {
+.navbar-collapse ul ul .parent:after {
   top: 10px;
   right: 15px;
   color: #777;
@@ -830,7 +833,7 @@ h1.logo-text a {
 /*-----------------------------------------------------------------------------------*/
 /* Mobile Menu */
 /*-----------------------------------------------------------------------------------*/
-.slicknav_btn {
+/*.slicknav_btn {
   position: relative;
   display: block;
   vertical-align: middle;
@@ -896,18 +899,18 @@ h1.logo-text a {
   clear: both;
 }
 /* IE6/7 support */
-.slicknav_menu {
+/*.slicknav_menu {
   *zoom: 1;
 }
 /* 
     User Default Style
     Change the following styles to modify the appearance of the menu.
 */
-.slicknav_menu {
+/*.slicknav_menu {
   font-size: 18px;
 }
 /* Button */
-.slicknav_btn {
+/*.slicknav_btn {
   margin: 5px 5px 6px;
   text-decoration: none;
   -webkit-border-radius: 4px;
@@ -916,12 +919,12 @@ h1.logo-text a {
   background-color: rgba(0, 0, 0, 0.4);
 }
 /* Button Text */
-.slicknav_menu .slicknav_menutxt {
+/*.slicknav_menu .slicknav_menutxt {
   color: #FFF;
   font-weight: bold;
 }
 /* Button Lines */
-.slicknav_menu .slicknav_icon-bar {
+/*.slicknav_menu .slicknav_icon-bar {
   background-color: #f5f5f5;
 }
 .slicknav_menu {
@@ -981,7 +984,7 @@ h1.logo-text a {
 }
 .slicknav_nav .slicknav_txtnode {
   margin-left: 15px;
-}
+} */
 h1 {
   font-size: 2em;
 }

@@ -2,6 +2,8 @@
 
 <?php
 $user =new User();
+$date=date("Y-m-d h:i:s");
+$user->update('users', array( 'last_LogoutTime'=> $date ));
 
 $user->logout();
  
