@@ -16,10 +16,10 @@ $title = "ILSP-final project";
         <link rel="stylesheet" href="/ILSP-group-final-project/lib/css/bootstrap-theme.min.css">
         
         <link rel="stylesheet" href="/ILSP-group-final-project/assets/css/bootstrap.css" rel="stylesheet"> 
-    <link rel="stylesheet" href="/ILSP-group-final-project/assets/css/animate.css" rel="stylesheet">
-    <link rel="stylesheet" href="/ILSP-group-final-project/assets/css/font-awesome.css" rel="stylesheet">
-        <link rel="stylesheet" href="/ILSP-group-final-project/assets/css/nexus.css" rel="stylesheet">
-        <link rel="stylesheet" href="/ILSP-group-final-project/assets/css/responsive.css" rel="stylesheet">
+    <link rel="stylesheet" href="/ILSP-group-final-project/lib/css/animate.css" rel="stylesheet">
+    <link rel="stylesheet" href="/ILSP-group-final-project/lib/css/font-awesome.css" rel="stylesheet">
+        <link rel="stylesheet" href="/ILSP-group-final-project/css/custom_main.css" rel="stylesheet">
+        <link rel="stylesheet" href="/ILSP-group-final-project/css/responsive.css" rel="stylesheet">
                                      
         <link rel="stylesheet" href="/ILSP-group-final-project/css/custom-css.css">
         
@@ -81,7 +81,11 @@ $title = "ILSP-final project";
                     </div>
       <div class="collapse navbar-collapse" id="myNavbar">
            <ul class="nav navbar-nav">
-                            <li class="active"><a href="/ILSP-group-final-project/index.php">Home</a></li>
+                           <li class="active"><a class="list-group-item" href="/ILSP-group-final-project/index.php">
+                            
+                             <i class="fa fa-home fa-fw color-primary"></i>&nbsp; Home
+                            
+                            </a></li>
                             
                             <!--the link for registration to home page contact is not working -->
                             <li class="dropdown">
@@ -148,14 +152,13 @@ $title = "ILSP-final project";
   }else {
  
   ?>
+ 
   <div id="container_header" class="container">
                 <div id="header" class="row">
                     <div class="col-md-12 margin-top-63">
                         <!-- Header Social Icons -->
                         <ul class="social-icons circle pull-right">
-                            <li class="social-rss">
-                                <a href="#" target="_blank" title="RSS"></a>
-                            </li>
+                            
                             <li class="social-twitter">
                                 <a href="#" target="_blank" title="Twitter"></a>
                             </li>
@@ -197,7 +200,11 @@ $title = "ILSP-final project";
                     </div>
                     <div class="collapse navbar-collapse" id="myNavbar">
                         <ul class="nav navbar-nav">
-                            <li class="active"><a href="/ILSP-group-final-project/index.php">Home</a></li>
+                            <li class="active"><a class="list-group-item" href="/ILSP-group-final-project/index.php">
+                            
+                             <i class="fa fa-home fa-fw color-white"></i>&nbsp; Home
+                            
+                            </a></li>
                             <li><a href="javascript:void(0)"  onclick="ilps_open_nav()" id="navbtn_category">category
 
                                     <i class="glyphicon glyphicon-menu-down" style="display: none;"></i>

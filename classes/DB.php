@@ -25,6 +25,7 @@ class DB {
         } catch (PDOException $e) {
             die($e->getMessage());
         }
+        
     }
     
     public static function getInstance(){
@@ -60,6 +61,9 @@ class DB {
         
         
         return $this;
+        
+        // Close connection
+    //unset($this->_pdo);
     }
     //this function do teack action like select,update delete ..
     public function action($action, $table, $where = array() ){
@@ -193,8 +197,12 @@ INNER JOIN `services` ON
 `organizetions`.`id`=
 `services`.`org_id`
 WHERE `category` ='$category'
-HAVING distance < 10000 
-ORDER BY distance LIMIT $position , $item_per_page";
+HAVING distance < 10000 ";
+     if($item_per_page!=""){
+          $sql .="ORDER BY distance LIMIT $position , $item_per_page";
+      } else {
+          $sql .="ORDER BY `distance` ASC ";
+      }
      
      if($this->query($sql)){
            return true;

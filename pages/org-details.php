@@ -67,7 +67,7 @@ if (!$user->count()){
             <div class="col-md-3 col-sm-6 col-xs-12">
               
            <?php  $logo=$data->logo_path;  
-           echo '<img  src="/ILSP-group-final-project/'.$logo.'"  alt="logo" width="160" height="160"  >' 
+           echo '<img  src="/ILSP-group-final-project/'.$logo.'" class="img-circle" alt="logo" width="160" height="160"  >' 
                    ?>    
 
             </div>
@@ -78,7 +78,7 @@ if (!$user->count()){
         </div>
     </div>
     
-    <div class="container" >
+    <div  >
 <ul class="nav nav-tabs">
     <li class="active"><a data-toggle="tab" href="#home">Basic information</a></li>
     <li><a data-toggle="tab" href="#menu1">Service information</a></li>
@@ -88,14 +88,32 @@ if (!$user->count()){
 
   <div class="tab-content" id="org_profile">
     <div id="home" class="tab-pane fade in active">
-        <p>Phone Number:<?php echo escape($data->phone_number);  ?> </p>
-        <p>Tell Phone:<?php echo escape($data->tell_phone);  ?>  </p>
-      <p>Po_Box:<?php echo escape($data->po_box);  ?>
-      <p>website :<?php echo escape($data->website);  ?>
-      <p>fax :<?php echo escape($data->fax);  ?>
-      <p>region :<?php echo escape($data->region);  ?>
-      <p>sub city :<?php echo escape($data->sub_city);  ?>
-      <p>description :<?php echo escape($data->org_description);  ?>.
+      <ul class="list-unstyled">
+        <li>
+        <i class="fa-mobile-phone color-primary"></i><?php echo escape($data->phone_number);  ?></li>
+        <li>
+        <li>
+        <i class="fa-phone color-primary"></i><?php echo escape($data->tell_phone);  ?></li>
+        <li>   
+            <i class="fa-envelope color-primary"></i>info@example.com</li>
+        <li>
+            <i class="fa-globe color-primary"></i><?php echo escape($data->website);  ?></li>
+          
+    </ul>
+    <ul class="list-unstyled">
+       <li>
+            <strong class="color-primary">po_box:</strong><?php echo escape($data->po_box);  ?></li>
+        <li>
+            <strong class="color-primary">fax:</strong><?php echo escape($data->fax);  ?></li>    
+        <li>
+            <strong class="color-primary">region:</strong><?php echo escape($data->region);  ?></li>
+        <li>
+            <strong class="color-primary">sub city:</strong><?php echo escape($data->sub_city);  ?></li>
+        <li>
+            <strong class="color-primary">description</strong> <br> 
+            <p><?php echo escape($data->org_description);  ?></p>
+            </li>
+    </ul>
     </div>
     <div id="menu1" class="tab-pane fade">
      <p>Service category:<?php echo escape($data->category);  ?>
@@ -117,8 +135,7 @@ if (!$user->count()){
  }
  
   #floating-panel {
-        position: absolute;
-        
+        display: none;
         z-index: 5;
         background-color: #fff;
         padding: 5px;
@@ -127,11 +144,43 @@ if (!$user->count()){
         font-family: "Roboto","sans-serif";
         line-height: 30px;
         padding-left: 10px;
-      } 
+      }
+.modal-open .modal {
+    
+    z-index: 9999;
+} 
+#inlines {
+    
+ display: inline-block;
+    
+ } 
+.nav-tabs > li > a {
+    
+    color: initial;
+}          
  
 </style>
-<h4> <button onclick="initialize()">show on map?</button> <button id="getdirection" onclick="getDirectionsLocation()" >get Direction</button> </h4>
-<div id="floating-panel">
+ <button  onclick="initialize()" class="btn btn-success" data-toggle="modal" data-target="#myModal">show on map?</button>  
+ 
+
+ <!--   
+<div id="maplocation">
+   
+</div>  -->
+     <!-- Modal -->
+  <div class="modal fade animate" id="myModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <div id="inlines">
+          
+          </div>
+          <div id="inlines">
+          <button class="btn btn-info" id="getdirection" onclick="getDirectionsLocation()" >get Direction</button>
+            </div>
+            <div id="inlines">
+                <div id="floating-panel" >
     <b>Mode of Travel: </b>
     <select id="mode">
       <option value="DRIVING">Driving</option>
@@ -140,7 +189,22 @@ if (!$user->count()){
       <option value="TRANSIT">Transit</option>
     </select>
     </div>
-<div id="maplocation"></div>
+            </div>
+           <div id="errorlocation"></div>
+            
+        </div>
+        <div class="modal-body">
+         
+          <div id="maplocation">
+   
+         </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
     </div>
     
@@ -192,6 +256,12 @@ if (!$user->count()){
     map.setZoom(16);
     map.setCenter(marker.getPosition());
   });
+  
+  $("#myModal").on("shown.bs.modal", function () {
+    google.maps.event.trigger(map, "resize");
+    map.setCenter(orgLatlng);
+});
+ 
   } 
 //display diraction from curant location
 
@@ -199,15 +269,22 @@ if (!$user->count()){
    var oLatlng = new google.maps.LatLng(<?php echo $lat; ?>,<?php echo $long; ?>); 
    var directionsService = new google.maps.DirectionsService;
    var z = document.getElementById("maolocation");    
-    
+   var watchID;    
     function getDirectionsLocation() {
-	console.log("getDirectionsLocation");
+    console.log("getDirectionsLocation");
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showDirectionsPosition);
+        //navigator.geolocation.getCurrentPosition(showDirectionsPosition);
+   watchID = navigator.geolocation.watchPosition(showDirectionsPosition,handleError,{enableHighAccuracy: true});
     } else {
         z.innerHTML = "Geolocation is not supported by this browser.";
     }
 }
+function clearTracking(){
+    if(watchID>0){
+        navigator.geolocation.clearWatch(watchID);
+    }
+}
+    
 function showDirectionsPosition(position) {
 	console.log("showDirectionsPosition");
     directionsLatitude = position.coords.latitude;
@@ -216,7 +293,26 @@ function showDirectionsPosition(position) {
     getDirections();
 } 
     
+function handleError(error){
+    var container = document.getElementById('errorlocation');
+    switch(error.code) {
+        case error.PERMISSION_DENIED:
+            container.innerHTML = "User denied the request for Geolocation."
+            break;
+        case error.POSITION_UNAVAILABLE:
+            container.innerHTML = "Location information is unavailable."
+            break;
+        case error.TIMEOUT:
+            container.innerHTML = "The request to get user location timed out."
+            break;
+        case error.UNKNOWN_ERROR:
+            container.innerHTML = "An unknown error occurred."
+            break;
+    }
+}
+    
     function getDirections() {
+         document.getElementById("floating-panel").style.display = "block";
         console.log("getDirections");
         var directionsDisplay = new google.maps.DirectionsRenderer;
         
@@ -254,7 +350,7 @@ function showDirectionsPosition(position) {
           if (status == 'OK') {
             directionsDisplay.setDirections(response);
           } else {
-            window.alert('Directions request failed due to ' + status);
+            window.alert('Directions request failed due to Mode Travel not available  ' + status);
           }
         });
       }

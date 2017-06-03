@@ -25,15 +25,14 @@
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFeO0plq2ej2d-aSIyMx_tTgXz5YYstnU&callback=initMap">
     </script>
     <!-- JS -->
-        <script type="text/javascript" src="/ILSP-group-final-project/assets/js/scripts.js"></script>
+        <script type="text/javascript" src="/ILSP-group-final-project/lib/js/scripts.js"></script>
         <!-- Isotope - Portfolio Sorting -->
-        <script type="text/javascript" src="/ILSP-group-final-project/assets/js/jquery.isotope.js" type="text/javascript"></script>
-        <!-- Mobile Menu - Slicknav -->
-        <script type="text/javascript" src="/ILSP-group-final-project/assets/js/jquery.slicknav.js" type="text/javascript"></script>
+        <script type="text/javascript" src="/ILSP-group-final-project/lib/js/jquery.isotope.js" type="text/javascript"></script>
+        
         <!-- Animate on Scroll-->
-        <script type="text/javascript" src="/ILSP-group-final-project/assets/js/jquery.visible.js" charset="utf-8"></script>
+        <script type="text/javascript" src="/ILSP-group-final-project/lib/js/jquery.visible.js" charset="utf-8"></script>
         <!-- Modernizr -->
-        <script src="/ILSP-group-final-project/assets/js/modernizr.custom.js" type="text/javascript"></script>
+        <script src="/ILSP-group-final-project/lib/js/modernizr.custom.js" type="text/javascript"></script>
         <!-- End JS -->
 </body>
 </html>        

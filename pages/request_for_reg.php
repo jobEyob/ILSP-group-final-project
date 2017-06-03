@@ -61,7 +61,7 @@ $autopaperError="";
                    'org_phone'=> Input::get('org_phone'), 
                    'org_location' => Input::get('org_location'),
                    'auto_paper_path'=>$fpath,
-                   'verify'=>0   
+                   'account_status'=>'newRequest'   
                    
                  
                 )); // 

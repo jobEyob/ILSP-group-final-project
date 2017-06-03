@@ -2,7 +2,7 @@
 
 
 <?php 
-$item_per_page = 1;
+$pagenation_per_page = 1;
 $category_val= Input::get('cate_val');
 $location_val= Input::get('loca_val');
 $lat_val=Input::get("lat_val");
@@ -30,7 +30,7 @@ if (!$user->count()){
     //breaking total records into pages
     $total_row= count($pages_datas); 
    //$total_row= 2;
-$pages = ceil($total_row / $item_per_page);
+$pages = ceil($total_row / $pagenation_per_page);
 //echo $pages;
 }
 
@@ -196,7 +196,7 @@ $(function() {
                                       }).on("page", function (e, num) {
                                           e.preventDefault();
 
-                                          $("#result").prepend('<div class="loading-indication"><img src="/ILSP-group-final-project/image/ajax-loader.gif"> Loading...</div>');
+                                          $(".search-result").prepend('<div class="container"><img src="/ILSP-group-final-project/image/ajax-loader.gif"> Loading...</div>');
                                           $("#result").load("/ILSP-group-final-project/pages/search-results.php", {'page': num});
 
                                           /* var page = num;
@@ -266,7 +266,7 @@ $(function() {
 
                }
                #orgname {
-                   border-radius: 0 4px 4px 0;
+                   border-radius: 8px 4px 4px 8px;
                }            
                #nearto{
                    margin-left: 20px; 
@@ -316,26 +316,8 @@ $(function() {
         </div>      
             <div class="col-md-1" >
             </div>                 
-
-            <div class="col-md-5">
-
-                <div class="input-group">
-                    <span class="input-group-btn">
-                        <button class="btn btn-default" type="button">Where?</button>
-                    </span>
-                    <input type="text" name="location" id="location" class="form-control" aria-label="..." placeholder="Where?"  autocomplete="off">
-
-                </div><!-- /input-group -->
-                <div id="nearto">
-                    <label  for="test">Near to Me</label>
-                    <label class="myCheckbox" >
-                        <input type="checkbox" name="test" id="myCheckbox" >
-                        <span></span>
-                    </label>
-                </div>
-            </div><!-- /.col-lg-6 --> 
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;           
-            <div class="col-md-5">
+      
+            <div id="forname" class="col-md-5 col-sm-5">
                 <div class="input-group">
                     <!--   <div class="input-group-btn">
                          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span id="srch-category">Category</span> <span class="caret"></span>
@@ -351,7 +333,7 @@ $(function() {
                     -->
                     <input type="hidden" id="txt-category"><!-- /this is for test -->
 
-                    <input type="text" name="orgname" id="orgname" class="form-control"  aria-label="..." placeholder="search By Name or keyword">
+                    <input type="text" name="orgname" id="orgname" class="form-control"  aria-label="..." placeholder="search By Name">
 
                     <div class="input-group-btn">
                         <span class="input-group-btn">
@@ -365,6 +347,27 @@ $(function() {
                 </div><!-- /input-group -->
 
             </div><!-- /.col-lg-6 -->
+             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <div id="forwhere" class="col-md-5 col-sm-5">
+
+                <div class="input-group">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button">Where?</button>
+                    </span>
+                    <input type="text" name="location" id="location" class="form-control" aria-label="..." placeholder="Where?"  autocomplete="off">
+
+                </div><!-- /input-group -->
+                <div id="nearto" >
+                    <label  for="test">
+                      Near to Me&nbsp; <i class="fa-location-arrow fa-fw color-white"></i> 
+                    </label>
+                    <label class="myCheckbox" >
+                        <input type="checkbox" name="test" id="myCheckbox" >
+                        <span></span>
+                    </label>
+                </div>
+            </div><!-- /.col-lg-6 --> 
+            
 
             <div class="col-md-1">
 

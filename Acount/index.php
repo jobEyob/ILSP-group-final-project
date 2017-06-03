@@ -69,7 +69,7 @@ if(!$user->isLoggedIn()){
             <?php } ?>
         </div>
 
-    <div>
+         <div class="container">
       <?php
      if(Session::exists('success')){
              echo  Session::flash('success') ;

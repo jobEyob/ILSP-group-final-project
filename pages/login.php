@@ -4,8 +4,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/ILSP-group-final-project/master/header.php
 ?>
 
 <div>
-    <h1> &nbsp;</h1>
-      
+    
 <?php
 $incoract="";   
 $nameError ="";
@@ -196,16 +195,22 @@ if($validation->passed()){
                         <!-- === END HEADER === -->
                         <!-- === BEGIN CONTENT === -->
 <div class="container">
+    
+     <!--  this for show flash massage if user change new password    -->
+      <?php
+     if(Session::exists('passchanged')){
+         ?>
+       <div class=" alert alert-success">
+           <?php
+             echo  Session::flash('passchanged') ;
+             ?>
+             </div>
+       <?php  }  ?>  
+
 <div class="row margin-vert-30">
                                 <!-- Login Box -->
-
-
-
-
 <!-- Modal -->
-
 <div class="modal-dialog" id="login" >
-
     <!-- Modal content-->
     <div class="loginmodal-container login-page" style="padding-top: 15px;" >
       <div class="modal-header">
@@ -237,7 +242,7 @@ if($validation->passed()){
       </div>
     </form>
         <div class="forgot-password">
-	<a href="#">Forgot Password</a>
+	<a href="/ILSP-group-final-project/pages/Fpass.php">Forgot Password</a>
         </div>
         
         

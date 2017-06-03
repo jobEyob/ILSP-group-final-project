@@ -16,21 +16,9 @@ include $_SERVER['DOCUMENT_ROOT'] . '/ILSP-group-final-project/master/header.php
                         </div>
                         <!-- End Top Menu -->
                     </div>
-<div class="container no-padding">
- 
- <div class="row">  
-                       
-<div id="after">
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/ILSP-group-final-project/pages/slide.php'; ?>
-    
-    </div>
-
- 
-
- </div>
- </div>
 <!--this for category list navbar-->
       <nav>
+           
             <div class="container" id="nav_category"  style="display: block" >
                <!-- <span style="float:right" onclick="ilps_close_nav()" class="glyphicon glyphicon-remove"></span> -->
                 <ul  id="category_list">
@@ -54,7 +42,21 @@ include $_SERVER['DOCUMENT_ROOT'] . '/ILSP-group-final-project/master/header.php
                 </ul>
                
             </div>
-      </nav>
+      </nav>                    
+<div class="container no-padding">
+ 
+ <div class="row">  
+                       
+<div id="after">
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/ILSP-group-final-project/pages/slide.php'; ?>
+    
+    </div>
+
+ 
+
+ </div>
+ </div>
+
 <div id="result"></div>
 <div id="paginations">
 
@@ -75,8 +77,8 @@ include $_SERVER['DOCUMENT_ROOT'] . '/ILSP-group-final-project/master/header.php
                         <!-- Portfolio Header Text -->
                         <div class="row">
                             <div class="col-md-12 padding-vert-30">
-                                <h2 class="subtitle text-center">Defining Style for the Joomla Based Website of Today</h2>
-                                <h3 class="subtitle text-center">Fiant tation qui fiant lius nisl. Est nam eros videntur eros at.</h3>
+                                <h2 class="subtitle text-center">Most visted organization</h2>
+                                <h3 class="subtitle text-center"></h3>
                             </div>
                         </div>
                         <!-- End Portfolio Header Text -->
@@ -87,7 +89,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/ILSP-group-final-project/master/header.php
                                 <div class="image-hover">
                                     <a href="#">
                                         <figure>
-                                            <img src="assets/img/portfolio/image1.jpg" alt="image1">
+                                            <img src="image/portfolio/image1.jpg" alt="image1">
                                             <figcaption>
                                                 <h3>Quam putamus</h3>
                                                 <span>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam.</span>
@@ -102,7 +104,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/ILSP-group-final-project/master/header.php
                                 <div class="image-hover">
                                     <a href="#">
                                         <figure>
-                                            <img src="assets/img/portfolio/image2.jpg" alt="image2">
+                                            <img src="image/portfolio/image2.jpg" alt="image2">
                                             <figcaption>
                                                 <h3>Quam putamus</h3>
                                                 <span>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam.</span>
@@ -117,7 +119,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/ILSP-group-final-project/master/header.php
                                 <div class="image-hover">
                                     <a href="#">
                                         <figure>
-                                            <img src="assets/img/portfolio/image3.jpg" alt="image3">
+                                            <img src="image/portfolio/image3.jpg" alt="image3">
                                             <figcaption>
                                                 <h3>Quam putamus</h3>
                                                 <span>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam.</span>
@@ -132,7 +134,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/ILSP-group-final-project/master/header.php
                                 <div class="image-hover">
                                     <a href="#">
                                         <figure>
-                                            <img src="assets/img/portfolio/image4.jpg" alt="image4">
+                                            <img src="image/portfolio/image4.jpg" alt="image4">
                                             <figcaption>
                                                 <h3>Quam putamus</h3>
                                                 <span>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam.</span>
@@ -147,7 +149,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/ILSP-group-final-project/master/header.php
                                 <div class="image-hover">
                                     <a href="#">
                                         <figure>
-                                            <img src="assets/img/portfolio/image5.jpg" alt="image5">
+                                            <img src="image/portfolio/image5.jpg" alt="image5">
                                             <figcaption>
                                                 <h3>Quam putamus</h3>
                                                 <span>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam.</span>
@@ -162,7 +164,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/ILSP-group-final-project/master/header.php
                                 <div class="image-hover">
                                     <a href="#">
                                         <figure>
-                                            <img src="assets/img/portfolio/image6.jpg" alt="image6">
+                                            <img src="image/portfolio/image6.jpg" alt="image6">
                                             <figcaption>
                                                 <h3>Quam putamus</h3>
                                                 <span>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam.</span>
@@ -177,7 +179,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/ILSP-group-final-project/master/header.php
                                 <div class="image-hover">
                                     <a href="#">
                                         <figure>
-                                            <img src="assets/img/portfolio/image7.jpg" alt="image7">
+                                            <img src="image/portfolio/image7.jpg" alt="image7">
                                             <figcaption>
                                                 <h3>Quam putamus</h3>
                                                 <span>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam.</span>
@@ -192,7 +194,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/ILSP-group-final-project/master/header.php
                                 <div class="image-hover">
                                     <a href="#">
                                         <figure>
-                                            <img src="assets/img/portfolio/image8.jpg" alt="image8">
+                                            <img src="image/portfolio/image8.jpg" alt="image8">
                                             <figcaption>
                                                 <h3>Quam putamus</h3>
                                                 <span>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam.</span>
@@ -205,16 +207,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/ILSP-group-final-project/master/header.php
                             <div class="clearfix"></div>
                         </div>
                         <!-- End Portfolio Images -->
-                        <!-- Portfolio Footer Text -->
-                        <div class="row">
-                            <div class="col-12-md">
-                                <p class="text-center padding-bottom-30" style="max-width:690px; margin:0 auto;">Mirum est notare quam littera gothica, quam nunc putamus. Cras non sem sem, at eleifend mi. Vivamus sit amet ante est, sit amet rutrum augue. Cras non sem sem, at eleifend mi. Nam liber tempor cum soluta nobis eleifend
-                                    option congue nihil imperdiet doming id quod mazim placerat facer possim assum.</p>
-                            </div>
-                        </div>
-                        <!-- End Portfolio Footer Text -->
                        
-                        <!-- === BEGIN FOOTER === -->
                     </div> 
        <!-- === END CONTENT === -->           
     <div id="base" class="container padding-vert-30">

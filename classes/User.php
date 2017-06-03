@@ -204,10 +204,19 @@ class User {
   $mail->Send();
  
 if(!$mail->send()) {
-    echo 'Message could not be sent.';
-    echo 'Mailer Error: ' . $mail->ErrorInfo;
+    echo '<div class="container">
+     <div class="alert alert-danger">
+     <strong>email could not be sent !</strong> please check your internet connection and try again.
+     </div>
+     </div>
+     ';
+    //echo 'Mailer Error: ' . $mail->ErrorInfo;
 } else {
-    echo 'Message has been sent';
+    echo '<div class="container">
+     <div class="alert alert-success"> <strong> email has been sent Successfull! </strong>
+     </div>
+     </div>
+     ';
 }
  }
 }

@@ -10,13 +10,16 @@
                                 <!-- Carousel Images -->
                                 <div class="carousel-inner" >
                                     <div class="item active">
-                                        <img src="assets/img/slideshow/slide1.jpg">
+                                        <img src="image/slideshow/slide1.jpg">
                                     </div>
                                     <div class="item">
-                                        <img src="assets/img/slideshow/slide2.jpg">
+                                        <img src="image/slideshow/slide2.jpg">
                                     </div>
                                     <div class="item">
-                                        <img src="assets/img/slideshow/slide3.jpg">
+                                        <img src="image/slideshow/slide3.jpg">
+                                    </div>
+                                    <div class="item">
+                                        <img src="image/slideshow/slide4.jpg">
                                     </div>
                                 </div>
                                 <!-- End Carousel Images -->

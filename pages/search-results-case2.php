@@ -24,7 +24,7 @@ $lng_val=Input::get("lng_val");
         @import "http://fonts.googleapis.com/css?family=Roboto:300,400,500,700";
 
 #SearchResults { margin-top: 20px; }
-#hgroup { margin-bottom: 20px; } 
+.mb20 { margin-bottom: 20px; } 
 
 #hgroup { padding-left: 15px; border-bottom: 1px solid #ccc; }
 #hgroup h1 { font: 500 normal 1.625em "Roboto",Arial,Verdana,sans-serif; color: #2a3644; margin-top: 0; line-height: 1.15; }
