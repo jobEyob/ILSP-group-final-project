@@ -32,6 +32,11 @@ if($validation->passed()){
      $login=$user->login(Input::get('username'), Input::get('password'), $remember);
      if($login){
         // $path=$_SERVER['DOCUMENT_ROOT'] . '/ILSP-group-final-project/';
+         $last_log_time = $user->data()->last_LogoutTime;
+        $user_id=$user->data()->id;
+
+        Session::put("last_log_time",$last_log_time );
+        Session::put("user_id",$user_id );
         
         if($user->hasPermission('admin')){
 

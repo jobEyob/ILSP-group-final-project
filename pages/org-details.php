@@ -78,36 +78,25 @@ if (!$user->count()){
         </div>
     </div>
     
-    <div  >
+    <div class='' >
 <ul class="nav nav-tabs">
-    <li class="active"><a data-toggle="tab" href="#home">Basic information</a></li>
+    <li class="active"><a data-toggle="tab" href="#home">Overview</a></li>
     <li><a data-toggle="tab" href="#menu1">Service information</a></li>
+     <li><a data-toggle="tab" href="#menu3">Contact information</a></li>
     <li><a data-toggle="tab" href="#menu2">map View</a></li>
     
   </ul>
 
   <div class="tab-content" id="org_profile">
     <div id="home" class="tab-pane fade in active">
-      <ul class="list-unstyled">
-        <li>
-        <i class="fa-mobile-phone color-primary"></i><?php echo escape($data->phone_number);  ?></li>
-        <li>
-        <li>
-        <i class="fa-phone color-primary"></i><?php echo escape($data->tell_phone);  ?></li>
-        <li>   
-            <i class="fa-envelope color-primary"></i>info@example.com</li>
-        <li>
-            <i class="fa-globe color-primary"></i><?php echo escape($data->website);  ?></li>
-          
-    </ul>
+      
     <ul class="list-unstyled">
-       <li>
-            <strong class="color-primary">po_box:</strong><?php echo escape($data->po_box);  ?></li>
+          
         <li>
-            <strong class="color-primary">fax:</strong><?php echo escape($data->fax);  ?></li>    
+         <span class="glyphicon glyphicon-map-marker"></span>   
+         <strong class="color-primary">region:</strong><?php echo escape($data->region);  ?></li>
         <li>
-            <strong class="color-primary">region:</strong><?php echo escape($data->region);  ?></li>
-        <li>
+            <span class="glyphicon glyphicon-map-marker"></span>
             <strong class="color-primary">sub city:</strong><?php echo escape($data->sub_city);  ?></li>
         <li>
             <strong class="color-primary">description</strong> <br> 
@@ -122,6 +111,26 @@ if (!$user->count()){
      <p>service year:<?php echo escape($data->service_year).'  year';   ?> 
      <p>open time:<?php echo escape($data->open_time);  ?> &nbsp; close time:<?php echo escape($data->close_time);  ?>     
       <p>service description:<?php echo escape($data->service_des);  ?></p>
+    </div>
+    <div id="menu3" class="tab-pane fade">
+     <ul class="list-unstyled">
+        <li>
+        <i class="fa-mobile-phone color-primary"></i><?php echo escape($data->phone_number);  ?></li>
+        <li>
+        <li>
+        <i class="fa-phone color-primary"></i><?php echo escape($data->tell_phone);  ?></li>
+        <li>   
+            <i class="fa-envelope color-primary"></i>info@example.com</li>
+        <li>
+            <i class="fa-globe color-primary"></i><?php echo escape($data->website);  ?></li>
+          
+    </ul>
+    <ul class="list-unstyled">
+        <li>
+            <strong class="color-primary">po_box:</strong><?php echo escape($data->po_box);  ?></li>
+        <li>
+            <strong class="color-primary">fax:</strong><?php echo escape($data->fax);  ?></li>  
+    </ul>
     </div>
     <div id="menu2" class="tab-pane fade">
      
@@ -160,7 +169,7 @@ if (!$user->count()){
 }          
  
 </style>
- <button  onclick="initialize()" class="btn btn-success" data-toggle="modal" data-target="#myModal">show on map?</button>  
+ <button  onclick="initialize()" class="btn btn-success" data-toggle="modal" data-target="#myModal">show on map?</button> 
  
 
  <!--   
@@ -218,6 +227,7 @@ if (!$user->count()){
 <?php
           }
      // echo $output;
+    
       }
       ?>
 
@@ -300,7 +310,7 @@ function handleError(error){
             container.innerHTML = "User denied the request for Geolocation."
             break;
         case error.POSITION_UNAVAILABLE:
-            container.innerHTML = "Location information is unavailable."
+container.innerHTML = "Sorry, we are Unable to retrieve your location yet.<br>If you use smartphone, please Turn on your GPS and or wait 1-2 minutes. "
             break;
         case error.TIMEOUT:
             container.innerHTML = "The request to get user location timed out."

@@ -45,6 +45,8 @@ $password_confirmError="";
                    'email'=> Input::get('email'),
                    'password'=> Hash::make(Input::get('password'), $salt),
                    'salt'=>$salt,
+                   'reg_date'=> date("Y-m-d"),
+                   'reg_time'=> date("h:i:s"),
                    'groups'=>1
                  
                 ));
@@ -110,8 +112,7 @@ $password_confirmError="";
                 <form class="form-horizontal signup-page" action="" method='post'>
                     <div class="signup-header">
                                         <h2>Register a new account</h2>
-                                        <p>Already a member? Click
-                                            <a href="#" class="color-green">HERE</a>to login to your account.</p>
+                                        
                                     </div>
                     <div class="form-group">
                         <label  for="uname">username:</label>

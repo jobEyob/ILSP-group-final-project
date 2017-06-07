@@ -4,7 +4,7 @@
 $item_per_page = 1;$location_val='';$data='';$output='';
 
 
-$user= DB::getInstance();
+$db= DB::getInstance(); $db2 = DB::getInstance();$user =new User();
 if(isset($_POST["cate_val"])){
 $category_val= Input::get('cate_val');
 $location_val= Input::get('loca_val');
@@ -109,18 +109,18 @@ $(function () {
 /* $location_val='';$data='';$output='';
 
 
-$user= DB::getInstance();
+$db= DB::getInstance();
 
 $category_val= Input::get('cate_val');
 $location_val= Input::get('loca_val');
 //echo 'ty'.$category_val.','.$location_val;
 
- $user->andget($category_val,$location_val);
-if (!$user->count()){
+ $db->andget($category_val,$location_val);
+if (!$db->count()){
     //Redirect::to("../index.php");
     echo 'Data Not Found';
       } else {
-    $pages_datas=$user->results(); 
+    $pages_datas=$db->results(); 
     
     //breaking total records into pages
     $total_row= count($pages_datas); 
@@ -146,12 +146,14 @@ if(isset($_POST["page"])){
 $position = (($page_number-1) * $item_per_page);
 
     if($lat_val =="undefined" || $lng_val =="undefined" ){
-       $user->andget($category_val,$location_val,$position, $item_per_page);
+       $db->andget($category_val,$location_val,$position, $item_per_page);
+       //$db2->andget_total($category_val,$location_val); 
     }else{
-       $user->neartogat($category_val,$lat_val,$lng_val,$position, $item_per_page);
+       $db->neartogat($category_val,$lat_val,$lng_val,$position, $item_per_page);
+       //$db2->neartogat_total($category_val,$lat_val,$lng_val);    
     }
 
-if (!$user->count()){
+if (!$db->count()){
     //Redirect::to("../index.php");
     echo '
     <div class="container">
@@ -169,8 +171,12 @@ if (!$user->count()){
     ';
     
       } else {
-    $datas=$user->results();
-    
+    $datas=$db->results();
+        
+       
+      //$user->multiplyfinde('organizetions','user_id');;
+       //print_r($user->multiplydata()->id);
+        
            ?>
 <div class="container" id="SearchResults">       
     <hgroup id="hgroup" class="mb20">
@@ -180,8 +186,9 @@ if (!$user->count()){
 	</hgroup>
           <div class="row margin-vert-30">
     <div id="section" class="col-md-9">
-          <?php          
-          //print_r($user->results());
+          <?php  
+           $datas=$db->results();       
+          //print_r($db->results());
           
           foreach ($datas as $data){
              // echo $data->org_name.'<br>';
@@ -235,7 +242,7 @@ if (!$user->count()){
     //echo $output;
      ?>
 </div>   
-    <?php if ($user->count()){ //this display if data avalebely  
+    <?php if ($db->count()){ //this display if data avalebely  
     
               ?>   
      <div class="col-md-3 ">
