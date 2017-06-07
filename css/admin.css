@@ -1,0 +1,22 @@
+.block{
+color: red;
+/*background-color: red !important;*/
+}
+
+.active{
+  color: green;
+}
+
+.deActivate{
+  color:#ffd633;
+}
+
+.report{
+  color: #ff9966;
+}
+
+
+/*override datatable css*/
+#myTable_wrapper{
+  margin-top: 10px;
+}

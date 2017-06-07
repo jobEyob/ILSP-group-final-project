@@ -47,7 +47,8 @@ if(!$user->isLoggedIn()){
            }else{
              $logo=$user->multiplydata()->logo_path;
              $org_name=$user->multiplydata()->org_name;
-
+             $account_status=$user->multiplydata()->account_status;
+             
 
            ?>
 
@@ -79,6 +80,16 @@ if(!$user->isLoggedIn()){
     <?php 
     $db= DB::getInstance();
     if(!$org_name == ""){
+        if($account_status == 'block'){  ?>
+         <div class="alert alert-danger">  
+             <h4> <span class="glyphicon glyphicon-warning-sign"></span> Your organization was blocked for violation of our regulations !!</h4> <br>
+         
+             <h4> Update Your  Information Know !! </h4>
+         </div>
+    <?php    }
+        else {
+            
+      
     $db->joinget($org_name);
     //print_r($db->results());
     $datas=$db->results();
@@ -128,6 +139,8 @@ if(!$user->isLoggedIn()){
 </div>
 </div>
 
-<?php }  ?>
+        <?php } 
+        
+    }  ?>
 <?php
 include $_SERVER['DOCUMENT_ROOT'] . '/ILSP-group-final-project/master/footer.php';

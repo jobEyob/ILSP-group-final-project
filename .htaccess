@@ -1,0 +1,5 @@
+ErrorDocument 404 /ILSP-group-final-project/includes/errors/404.php
+Options -Indexes 
+
+
+

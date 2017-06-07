@@ -27,7 +27,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/ILSP-group-final-project/admin/functions.p
   ?>
   <div class="row ">
     <form id="request_list_form" method="post" action="">
-      <div class="col-md-12">
+
         <table  id='myTable' class="table table-bordered">
           <thead>
             <tr>
@@ -71,7 +71,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/ILSP-group-final-project/admin/functions.p
 
           </tbody>
         </table>
-      </div>
+
       <div class="request_replay_controller">
         <button type="submit" name="reject" id="reject" class="btn btn-danger">Reject</button>
         <button type="submit" name="accept"  id="accept" class="btn btn-success">Accept</button>
@@ -117,13 +117,20 @@ if(isset($_POST['reject'])){
   foreach ($_POST['select_checkbox'] as $key => $value) {
     $organizetions='request';
     $data=["account_status"=>"'deactivate'"];
-    $user->update($organizetions,$value,$data);
+    $user->updateAdmin($organizetions,$value,$data);
+    header("Refresh:0");
   }
 }elseif(isset($_POST['accept'])){
   foreach ($_POST['select_checkbox'] as $key => $value) {
     $organizetions='request';
     $data=["account_status"=>"'accepted'"];
-    $user->update($organizetions,$value,$data);
+    $user->updateAdmin($organizetions,$value,$data);
+    header("Refresh:0");
+    // if($user->updateAdmin($organizetions,$value,$data)==1){
+    //   echo "<script>bootbox.alert('acce')</script>";
+    // }else{
+    //     echo "<script>bootbox.alert('request deactived')</script>";
+    // }
   }
 }
   //this is to get the checkbox value in php

@@ -110,19 +110,19 @@ list-style: none;
 }
 
 </style>
-<script>
 
 
-</script>
+
 <div class="container">
 <div class="row admin-page-header">
 
   <div class="col-md-offset-2  ">
     <ul class="numerical_report">
-      <li>Total registered user : <?php  single_array_decoder(select($sql = "SELECT COUNT(id) FROM `organizetions` "));?></li>
-      <li>Total page visitor : <?php  single_array_decoder(select($sql = "SELECT count(DISTINCT ip) FROM `stattracker` "));?></li>
-      <li>Total page view : <?php  single_array_decoder(select($sql = "SELECT count(id) FROM `stattracker` "));?></li>
-      <li>
+      <li>Total registered ORG. : <?php  echo single_array_decoder(select($sql = "SELECT COUNT(id) FROM `organizetions` "));?></li>
+      <li>Total page visitor : <?php  echo single_array_decoder(select($sql = "SELECT count(DISTINCT ip) FROM `stattracker` "));?></li>
+      <li>Total page view : <?php  $total_page_view=single_array_decoder(select($sql = "SELECT count(id) FROM `stattracker` ;"));  echo $total_page_view;?></li>
+      <!-- <li> new Visitor<sup><span class="badge"> <?php  echo single_array_decoder(select($sql = "SELECT COUNT(DISTINCT ip) FROM `stattracker` WHERE date(`thedate_visited`)>=  '".Session::get('last_log_time')."' "));?></span></sup></li> -->
+      <li>new visit <sup><span class="badge">  <?php echo single_array_decoder(select($sql = "SELECT COUNT(id) FROM `stattracker` WHERE date(`thedate_visited`)>'".Session::get('last_log_time')."' "));?></span></sup</li>
     </ul>
 
   </div>
@@ -137,3 +137,7 @@ list-style: none;
         <li><a  href="/ILSP-group-final-project/admin/admin-elements/request.php"><span class="glyphicon glyphicon-registration-mark"></span>request</a></li>
       </ul>
     </div>
+
+
+
+<!--admin footer-->

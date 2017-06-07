@@ -1,0 +1,4 @@
+.modal-dialog{
+margin-top: 200px;
+}
+/*when we override the bootbox css it will also override the bootstrap css*/

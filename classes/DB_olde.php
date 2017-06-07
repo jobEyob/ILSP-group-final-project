@@ -45,7 +45,7 @@ class DB {
                     $this->_query->bindValue($x, $param);
 
                     $x++;
-                   // print_r($this->_query);
+                    print_r($this->_query);
                 }
             }
             
@@ -109,7 +109,7 @@ INNER JOIN `locations` ON
 INNER JOIN `services` ON
 `organizetions`.`id`=
 `services`.`org_id`
-WHERE `org_name`= '$filde' AND NOT `account_status`='block' ";
+WHERE `org_name`= '$filde'";
        
        if($this->query($sql)){
            return true;
@@ -353,7 +353,7 @@ public function closeConnection()
        }
        return false;
    }
-   // admin update
+// admin update
 public function updateAdmin($tabel, $id, $fileds=array()){
   //Array ( [0] => account_status [1] => 2 )
   //UPDATE `organizetions` SET `account_status` = '0' WHERE `id` ='53'
@@ -381,7 +381,7 @@ public function updateAdmin($tabel, $id, $fileds=array()){
      }
   return false;
 
- } // update admin end 
+ }    
 
    public function delete($table, $where){
       return $this->action('DELETE', $table, $where);  

@@ -15,7 +15,7 @@ try {
     }
 catch(PDOException $e)
     {
-    echo $sql . "<br>" . $e->getMessage();
+    echo "<br>" . $e->getMessage();
     }
 
 }
@@ -34,7 +34,7 @@ function single_array_decoder($data){
       # code...
         foreach ($key as $values) {
           # code...
-          echo $values;
+          return $values;
         }
     }
 

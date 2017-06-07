@@ -15,9 +15,10 @@ $title = "ILSP-final project";
         <link rel="stylesheet" href="/ILSP-group-final-project/lib/css/bootstrap.min.css">
         <link rel="stylesheet" href="/ILSP-group-final-project/lib/css/bootstrap-theme.min.css">
         
-        <link rel="stylesheet" href="/ILSP-group-final-project/assets/css/bootstrap.css" rel="stylesheet"> 
+    <link rel="stylesheet" href="/ILSP-group-final-project/css/bootstrap.css" rel="stylesheet">    
     <link rel="stylesheet" href="/ILSP-group-final-project/lib/css/animate.css" rel="stylesheet">
     <link rel="stylesheet" href="/ILSP-group-final-project/lib/css/font-awesome.css" rel="stylesheet">
+       
         <link rel="stylesheet" href="/ILSP-group-final-project/css/custom_main.css" rel="stylesheet">
         <link rel="stylesheet" href="/ILSP-group-final-project/css/responsive.css" rel="stylesheet">
                                      
@@ -32,6 +33,19 @@ $title = "ILSP-final project";
         <script src="/ILSP-group-final-project/lib/js/jquery-ui.js"></script>
         <script src="/ILSP-group-final-project/lib/js/jquery-ui-timepicker-addon.js"></script>
         <script src="/ILSP-group-final-project/lib/js/jquery.bootpag.min.js"></script> 
+        <!-- datatable plugin  -->
+        <script src="/ILSP-group-final-project/lib/js/jquery.dataTables.min.js"></script>
+        <link rel="stylesheet" href="/ILSP-group-final-project/lib/css/jquery.dataTables.min.css"/>
+        <script src="/ILSP-group-final-project/js/datatable-style.js"></script>  
+      <!-- admin style sheet --
+       <link rel="stylesheet" href="/ILSP-group-final-project/css/admin.css"/> -->
+
+      <!--  morris : graph plugin-->
+      <script src="/ILSP-group-final-project/lib/js/raphael-min.js"></script>
+      <script src="/ILSP-group-final-project/lib/js/morris.js"></script>
+      <script src="/ILSP-group-final-project/lib/js/morris.min.js"></script>
+      <link rel="stylesheet" href="/ILSP-group-final-project/lib/css/morris.css"/>
+      <script src="/ILSP-group-final-project/js/morris_custome.js"></script>
          
                                                       
     </head>
@@ -44,6 +58,102 @@ $title = "ILSP-final project";
     $user= new User();
     
   if($user->isLoggedIn()){
+      if($user->hasPermission('admin')){   ?>
+ 
+          <div id="container_header" class="container">
+                  <div id="header" class="row">
+                      <div class="col-md-12 margin-top-40">
+                          <!-- Header Social Icons -->
+
+                          <!-- End Header Social Icons -->
+                      </div>
+                      <div class="clear"></div>
+                  </div>
+              </div>
+       <div class="primary-container-group">
+      <!-- Background -->
+        <div class="primary-container-background">
+      <div class="primary-container"></div>
+            <div class="clearfix"></div>
+         </div>
+                  <!--End Background -->
+       <div class="primary-container">
+        <header >
+             <!--this for navigation -->
+              <nav class="navbar navbar-fixed-top" id="navbar" >
+                  <div class="container-fluid">
+                      <div class="navbar-header">
+
+                          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+
+                              <span class="icon-bar"></span>
+                              <span class="icon-bar"></span>
+                              <span class="icon-bar"></span>
+
+                          </button>
+                          <a class="navbar-brand" href="#myPage">Logo</a>
+
+                      </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+             <ul class="nav navbar-nav">
+                              <li class="active"><a href="/ILSP-group-final-project/admin/">Dashbord</a></li>
+
+                              <!--the link for registration to home page contact is not working -->
+                              <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Service
+                      <span class="caret"></span>
+                      </a>
+                      <ul class="dropdown-menu">
+                          <li><a href="/ILSP-group-final-project/Acount/serviceform.php" >Add service</a></li>
+                          <li><a href="/ILSP-group-final-project/Acount/updateService.php">updated service</a></li>
+                      </ul>
+
+                   </li>
+
+                          </ul>
+              <ul class="nav navbar-nav navbar-right">
+
+
+                  <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                          <span class="glyphicon glyphicon-user"></span>
+                          <strong><?php echo escape($user->data()->username);  ?></strong>
+                          <span class="glyphicon glyphicon-chevron-down"></span>
+                          <sup><span class="badge badge-info glyphicon glyphicon- ">3</span></sup>
+                      </a>
+                      <ul class="dropdown-menu">
+                          <li>
+
+
+                               <a href="/ILSP-group-final-project/Acount/index.php" >Profile</a>
+
+                          </li>
+
+                         <li><a href="/ILSP-group-final-project/Acount/acountsting.php">
+                          Account Settings </a></li>
+
+                           <li><a href="#">notifications </a></li>
+
+
+
+
+              <li><a href="/ILSP-group-final-project/pages/logout.php">Sign Out </a></li>
+                      </ul>
+                  </li>
+
+                  <li> &nbsp;&nbsp;&nbsp;&nbsp;</li>
+              </ul>
+
+
+          </div>
+      </div>
+
+
+
+  </nav>
+          </header>
+ <?php   
+   }else{
    ?>
     <div id="container_header" class="container">
                 <div id="header" class="row">
@@ -89,12 +199,19 @@ $title = "ILSP-final project";
                             
                             <!--the link for registration to home page contact is not working -->
                             <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Service
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Information
                     <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="/ILSP-group-final-project/Acount/serviceform.php" >Add service</a></li>
-                        <li><a href="/ILSP-group-final-project/Acount/updateService.php">updated service</a></li>
+                       <?php  $db= DB::getInstance();
+                              
+                         $db->get('organizetions',array('user_id', '=', $user->data()->id));
+                       if(!$db->count()){
+                        ?>
+                        <li><a href="/ILSP-group-final-project/Acount/serviceform.php" >Add Information</a></li>
+                        <?php }else {  ?>
+                        <li><a href="/ILSP-group-final-project/Acount/updateService.php">updated Informatiom</a></li>
+                        <?php }  ?>
                     </ul>
                      
                  </li> 
@@ -142,12 +259,8 @@ $title = "ILSP-final project";
 </nav>
         </header>
   <?php
-       //$us = new User();
-   if($user->hasPermission('admin')){
- 
-     //echo '<p>you have administerater</p>';
-      // Redirect::to('/ILSP-group-final-project/Admin/index.php');
-   }       
+  } //hasPermission end  
+          
     
   }else {
  

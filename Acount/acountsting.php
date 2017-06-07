@@ -140,7 +140,7 @@ if(Input::exists()){
                                 <label class="col-md-3 control-label">Username:</label>
                                 <span class="error"> <?php echo $username_Error;?></span>
                                 <div class="col-md-8">
-                                    <input class="form-control" name="username" value="<?php echo escape($user->data()->username);  ?>" type="text">
+                                    <input  class="form-control" name="username" value="<?php echo escape($user->data()->username);  ?>" type="text">
                                 </div>
                             </div>
                             
